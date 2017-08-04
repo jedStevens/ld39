@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=1]
 
-[ext_resource path="res://player/arrow.gd" type="Script" id=1]
-[ext_resource path="res://player/arrows.png" type="Texture" id=2]
+[ext_resource path="res://player/rigid_sword.gd" type="Script" id=1]
+[ext_resource path="res://player/sword.png" type="Texture" id=2]
 [ext_resource path="res://player/metal_hit.wav" type="Sample" id=3]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=4]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 4.33964, -17.942, 2.09884, 14.104, -0.901164, 14.104, -2.90116, -17.896, 0.0988364, -21.896 )
+points = Vector2Array( -2.09884, 21.896, -2.09884, -0.104038, 1.90116, -0.104038, 1.90116, 21.896, -0.0988385, 23.896 )
 
 [sub_resource type="ColorRamp" id=2]
 
@@ -23,56 +23,60 @@ samples/metal_hit = {
 "sample": ExtResource( 3 )
 }
 
-[node name="arrow" type="KinematicBody2D" groups=[
-"player_weapon",
+[node name="sword" type="RigidBody2D" groups=[
+"prop",
 ]]
 
-transform/pos = Vector2( 0, 3 )
-transform/rot = 0.630454
 input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( -1, 8.74228e-08, -8.74228e-08, -1, 0.90091, 9.01046 )
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 2
-collision/mask = 0
-collision/margin = 0.08
+collision/mask = 2
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 2
+contact_monitor = true
+sleeping = false
+can_sleep = true
+velocity/linear = Vector2( 0, 0 )
+velocity/angular = 0.0
+damp_override/linear = -1.0
+damp_override/angular = -1.0
 script/script = ExtResource( 1 )
+frame = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
-transform/pos = Vector2( 0.90091, 9.01046 )
-transform/rot = 180.0
 build_mode = 0
-polygon = Vector2Array( 0.0988364, -21.896, -2.90116, -17.896, -0.901164, 14.104, 2.09884, 14.104, 4.33964, -17.942 )
+polygon = Vector2Array( -0.0988385, 23.896, 1.90116, 21.896, 1.90116, -0.104038, -2.09884, -0.104038, -2.09884, 21.896 )
 shape_range = Vector2( 0, 0 )
 trigger = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="sprite" type="Sprite" parent="."]
 
-transform/pos = Vector2( -0.0550164, 4.9997 )
+transform/rot = 180.0
 texture = ExtResource( 2 )
 vframes = 4
-hframes = 6
-__meta__ = {
-"_edit_lock_": true
-}
+hframes = 3
 
-[node name="target" type="Position2D" parent="."]
-
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Particles2D" type="Particles2D" parent="."]
+[node name="Particles2D" type="Particles2D" parent="sprite"]
 
 visibility/opacity = 0.25
-transform/pos = Vector2( -0.0550164, 4.9997 )
 config/amount = 12
 config/lifetime = 0.4
 config/process_mode = 1
 config/local_space = false
 config/texture = ExtResource( 2 )
-config/h_frames = 6
+config/h_frames = 3
 config/v_frames = 4
 params/direction = 0.0
 params/spread = 180.0
@@ -102,6 +106,6 @@ params/attenuation/max_distance = 2048.0
 params/attenuation/distance_exp = 1.0
 config/polyphony = 1
 config/samples = SubResource( 3 )
-config/pitch_random = 0.398
+config/pitch_random = 0.0
 
 

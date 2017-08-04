@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://player/sword.gd" type="Script" id=1]
 [ext_resource path="res://player/sword.png" type="Texture" id=2]
+[ext_resource path="res://player/metal_hit.wav" type="Sample" id=3]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -12,6 +13,15 @@ points = Vector2Array( -2.09884, 21.896, -2.09884, -0.104038, 1.90116, -0.104038
 
 offsets = FloatArray( 0, 1 )
 colors = ColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="SampleLibrary" id=3]
+
+samples/metal_hit = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
+}
 
 [node name="sword" type="KinematicBody2D" groups=[
 "player_weapon",
@@ -79,5 +89,16 @@ params/anim_speed_scale = 0.0
 params/anim_initial_pos = 0.0
 randomness/spread = -1.0
 color/color_ramp = SubResource( 2 )
+
+[node name="sfx" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 3 )
+config/pitch_random = 0.0
 
 

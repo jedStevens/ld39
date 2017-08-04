@@ -158,7 +158,15 @@ func _process(delta):
 		else:
 			if block_chain.find(int(block)) == -1:
 				block_chain = [int(block)]
-		
+	
+	if get_power() / get_node(power_bar).max_val < 0.25:
+		if not get_node("low_hp_sfx").is_active():
+			get_node("low_hp_sfx").play("low_hp")
+	else:
+		get_node("low_hp_sfx").stop_all()
+
+func get_power():
+	return get_node(power_bar).value
 	
 	
 func create_selection_blocks():

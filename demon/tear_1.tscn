@@ -113,7 +113,6 @@ damage = 25
 
 texture = ExtResource( 2 )
 vframes = 8
-frame = 6
 
 [node name="anim" type="AnimationPlayer" parent="."]
 
@@ -200,6 +199,7 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+monitoring = false
 collision/layers = 3
 collision/mask = 3
 
@@ -209,6 +209,8 @@ build_mode = 0
 polygon = Vector2Array( 13, 0, 29, -3, 74, 0, 36, 3 )
 shape_range = Vector2( 0, 0 )
 trigger = true
+
+[connection signal="finished" from="anim" to="." method="_on_anim_finished"]
 
 [connection signal="body_enter" from="attacks/attack_frame1" to="." method="on_aoe_enter"]
 

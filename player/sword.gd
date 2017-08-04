@@ -6,6 +6,7 @@ var timer = 0
 var direction = Vector2(0,0)
 var gamma = 2
 
+var dead = false
 
 func _ready():
 	set_fixed_process(true)
@@ -19,6 +20,10 @@ func _fixed_process(delta):
 	timer -= delta
 	if timer < 0:
 		queue_free()
+	
+	if is_colliding() and not dead and get_collider().is_in_group("stone"):
+		dead = true
+		get_node("sfx").play("metal_hit")
 	
 	move(direction.normalized()*delta*move_speed)
 	

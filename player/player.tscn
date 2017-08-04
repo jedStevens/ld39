@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/select_block.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/player.png" type="Texture" id=3]
+[ext_resource path="res://player/low_hp.wav" type="Sample" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -89,6 +90,15 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="SampleLibrary" id=5]
+
+samples/low_hp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 4 )
+}
+
 [node name="player" type="KinematicBody2D" groups=[
 "player",
 ]]
@@ -151,6 +161,23 @@ enabled = true
 cast_to = Vector2( 0, 3 )
 layer_mask = 1
 type_mask = 15
+
+[node name="low_hp_sfx" type="SamplePlayer" parent="."]
+
+config/polyphony = 1
+config/samples = SubResource( 5 )
+default/volume_db = 0.0
+default/pitch_scale = 1.0
+default/pan = 0.0
+default/depth = 0.0
+default/height = 0.0
+default/filter/type = 0
+default/filter/cutoff = 5000.0
+default/filter/resonance = 1.0
+default/filter/gain = 1.0
+default/reverb_room = 2
+default/reverb_send = 0.0
+default/chorus_send = 0.0
 
 [connection signal="on_selection" from="." to="." method="cast_weapon"]
 

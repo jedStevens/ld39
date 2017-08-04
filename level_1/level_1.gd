@@ -3,7 +3,7 @@ extends Node2D
 var max_demon_hits = 40
 var demon_hits = 0
 var demon_hit_timer = 0
-var demon_hit_delay = 5
+var demon_hit_delay = 2
 
 var current_level = 0
 var hits_needed_to_level_up = player.HITS_PER_LEVEL[0]
@@ -19,6 +19,7 @@ func _process(delta):
 		current_level += 1
 		if current_level >= max_level:
 			get_node("anim").play("win")
+			set_process(false)
 		else:
 			hits_needed_to_level_up = player.HITS_PER_LEVEL[current_level]
 	get_node("hits").set_skulls(hits_needed_to_level_up)
@@ -46,7 +47,7 @@ func _on_eye_area_L_body_enter( body ):
 
 func hit_demon():
 	if demon_hit_timer <= 0:
-		hits_needed_to_level_up -= 1
+		hits_needed_to_level_up -= player.damage
 		demon_hits += 1
 		get_node("intro_demon/sfx").play("pain")
 		demon_hit_timer = demon_hit_delay
@@ -85,5 +86,5 @@ func triple_eye():
 		demon_eye(spawn_node)
 
 func win():
-	get_tree().change_scene("res://win_screen/win_screen")
+	get_tree().change_scene("res://win_screen/win_screen.tscn")
 		

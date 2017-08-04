@@ -9,6 +9,8 @@ const ARROW = 2
 const GRAVITY = 200
 
 const HITS_PER_LEVEL = [1, 3, 5]
+
+var damage = 1
 # Swipes, Eye, Claw, Tail, Fire
 
 var weapon = SWORD

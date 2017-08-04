@@ -18,10 +18,15 @@ func check_for_player():
 			
 			if area.overlaps_body(player.body):
 				player.body.damage(damage* (0 if already_hit_player else 1), area)
-				queue_free()
+				
 				already_hit_player = true
 				break
+	
+
 
 func on_aoe_enter(body):
 	if body.is_in_group("player_weapon"):
 		queue_free()
+
+func _on_anim_finished():
+	queue_free()

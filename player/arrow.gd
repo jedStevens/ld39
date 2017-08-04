@@ -33,8 +33,9 @@ func _fixed_process(delta):
 	
 	grav += Vector2(0,grav_str) * delta
 	
-	if is_colliding():
-		if not get_collider().is_in_group("player_weapon"):
+	if is_colliding() and not dead:
+		if get_collider().is_in_group("stone"):
+			get_node("sfx").play("metal_hit")
 			dead = true
 	if not dead:
 		var travel_dir = direction.normalized()*delta*(move_speed/3+2*move_speed/3*charge/4)+grav

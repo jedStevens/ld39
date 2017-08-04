@@ -44,7 +44,7 @@ points = Vector2Array( 14.5808, -42.7374, 15.6089, -12.023, 0.958481, 0.699726, 
 [sub_resource type="ConvexPolygonShape2D" id=8]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 10.3833, -62.0449, 15.3776, -17.3335, 1.58365, 3.35748, -10.3077, -12.8148, -13.3994, -40.8783, -1.74593, -80.8333 )
+points = Vector2Array( -1.36566, -80.5435, 11.7148, -34.6429, 14.5687, -13.7141, 3.62871, -8.0063, -11.83, -19.422, -13.0192, -40.3508 )
 
 [sub_resource type="Animation" id=9]
 
@@ -154,6 +154,7 @@ damage = 30
 
 texture = ExtResource( 2 )
 hframes = 10
+frame = 7
 
 [node name="attacks" type="Node2D" parent="."]
 
@@ -177,6 +178,7 @@ monitoring = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="attacks/aoe0"]
 
+visibility/visible = false
 build_mode = 0
 polygon = Vector2Array( -0.969559, 0.762733, -11.2221, 2.47148, -9.37091, 18.7046, -4.24466, 45.7598, 1.16638, 28.6723, 3.8719, 41.3455, 10.9917, 19.9862, 13.4124, 9.16408 )
 shape_range = Vector2( 0, 2 )
@@ -184,6 +186,7 @@ trigger = false
 
 [node name="aoe1" type="Area2D" parent="attacks"]
 
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -209,6 +212,7 @@ trigger = false
 
 [node name="aoe2" type="Area2D" parent="attacks"]
 
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -236,12 +240,11 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-monitoring = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="attacks/aoe3"]
 
 build_mode = 0
-polygon = Vector2Array( -1.74593, -80.8333, -13.3994, -40.8783, -10.3077, -12.8148, 1.58365, 3.35748, 15.3776, -17.3335, 10.3833, -62.0449 )
+polygon = Vector2Array( -1.36566, -80.5435, 11.7148, -34.6429, 14.5687, -13.7141, 3.62871, -8.0063, -11.83, -19.422, -13.0192, -40.3508 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
@@ -272,5 +275,7 @@ default/filter/gain = 1.0
 default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
+
+[connection signal="finished" from="anim" to="." method="_on_anim_finished"]
 
 
