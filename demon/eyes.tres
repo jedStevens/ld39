@@ -1,0 +1,36 @@
+[gd_resource type="Animation" format=1]
+
+[resource]
+
+resource/name = "game_eyes_anim"
+length = 70.0
+loop = true
+step = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 15, 25, 35, 45, 55, 65 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "demon_eye"
+}, {
+"args": [  ],
+"method": "demon_eye"
+}, {
+"args": [  ],
+"method": "demon_eye"
+}, {
+"args": [  ],
+"method": "triple_eyes"
+}, {
+"args": [  ],
+"method": "triple_eyes"
+}, {
+"args": [  ],
+"method": "triple_eyes"
+} ]
+}
+

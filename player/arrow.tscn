@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://player/arrow.gd" type="Script" id=1]
+[ext_resource path="res://player/arrows.png" type="Texture" id=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 4.33964, -17.942, 2.09884, 14.104, -0.901164, 14.104, -2.90116, -17.896, 0.0988364, -21.896 )
+
+[sub_resource type="ColorRamp" id=2]
+
+offsets = FloatArray( 0, 1 )
+colors = ColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[node name="arrow" type="KinematicBody2D" groups=[
+"player_weapon",
+]]
+
+transform/pos = Vector2( 0, 3 )
+transform/rot = 0.630454
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( -1, 8.74228e-08, -8.74228e-08, -1, 0.90091, 9.01046 )
+shapes/0/trigger = false
+collision/layers = 2
+collision/mask = 0
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+transform/pos = Vector2( 0.90091, 9.01046 )
+transform/rot = 180.0
+build_mode = 0
+polygon = Vector2Array( 0.0988364, -21.896, -2.90116, -17.896, -0.901164, 14.104, 2.09884, 14.104, 4.33964, -17.942 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( -0.0550164, 4.9997 )
+texture = ExtResource( 2 )
+vframes = 4
+hframes = 6
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="target" type="Position2D" parent="."]
+
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Particles2D" type="Particles2D" parent="."]
+
+visibility/opacity = 0.25
+transform/pos = Vector2( -0.0550164, 4.9997 )
+config/amount = 12
+config/lifetime = 0.4
+config/process_mode = 1
+config/local_space = false
+config/texture = ExtResource( 2 )
+config/h_frames = 6
+config/v_frames = 4
+params/direction = 0.0
+params/spread = 180.0
+params/linear_velocity = 1.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 0.0
+params/anim_initial_pos = 0.0
+randomness/spread = -1.0
+color/color_ramp = SubResource( 2 )
+
+

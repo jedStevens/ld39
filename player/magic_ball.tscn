@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://player/magic_ball.gd" type="Script" id=1]
+[ext_resource path="res://player/magic_ball.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 7.90399
+
+[sub_resource type="ColorRamp" id=2]
+
+offsets = FloatArray( 0, 0.105263, 0.900585, 1 )
+colors = ColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "fly"
+length = 0.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite/sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[node name="magic_ball" type="KinematicBody2D" groups=[
+"player_weapon",
+]]
+
+input/pickable = false
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 2
+collision/mask = 2
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+
+[node name="sprite" type="Node2D" parent="."]
+
+[node name="sprite" type="Sprite" parent="sprite"]
+
+transform/pos = Vector2( 0.539398, 5.42968 )
+texture = ExtResource( 2 )
+flip_v = true
+hframes = 4
+frame = 1
+
+[node name="Particles2D" type="Particles2D" parent="sprite"]
+
+visibility/opacity = 0.25
+transform/pos = Vector2( 0.539398, 5.42968 )
+z/z = -1
+config/amount = 4
+config/lifetime = 0.5
+config/process_mode = 1
+config/local_space = false
+config/texture = ExtResource( 2 )
+config/h_frames = 4
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 0.0
+params/anim_initial_pos = 0.0
+color/color_ramp = SubResource( 2 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/fly = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+

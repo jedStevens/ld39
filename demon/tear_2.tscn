@@ -1,0 +1,276 @@
+[gd_scene load_steps=16 format=1]
+
+[ext_resource path="res://demon/tear_1.gd" type="Script" id=1]
+[ext_resource path="res://demon/tear_2.png" type="Texture" id=2]
+[ext_resource path="res://demon/pre_tear.wav" type="Sample" id=3]
+[ext_resource path="res://demon/tear_1.wav" type="Sample" id=4]
+[ext_resource path="res://demon/tear_2.wav" type="Sample" id=5]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 1.16638, 28.6723, -4.24466, 45.7598, -9.37091, 18.7046 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 10.9917, 19.9862, 3.8719, 41.3455, 1.16638, 28.6723 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -9.37091, 18.7046, -11.2221, 2.47148, -0.969559, 0.762733, 13.4124, 9.16408, 10.9917, 19.9862, 1.16638, 28.6723 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 15.5484, -16.8943, 9.99492, 26.5364, 4.86867, -2.51237 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 4.86867, -2.51237, -1.25435, 22.2645, -10.9373, -0.234032, -10.6525, -26.1501 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 15.5484, -16.8943, 4.86867, -2.51237, -10.6525, -26.1501, 5.72305, -31.1339, 12.8428, -25.1533 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 14.5808, -42.7374, 15.6089, -12.023, 0.958481, 0.699726, -11.1217, -1.87052, -10.7949, -40.6744, -0.399971, -66.5905 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 10.3833, -62.0449, 15.3776, -17.3335, 1.58365, 3.35748, -10.3077, -12.8148, -13.3994, -40.8783, -1.74593, -80.8333 )
+
+[sub_resource type="Animation" id=9]
+
+length = 0.9
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75, 0.8 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0.9 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SamplePlayer:play/play")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0, 0.3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 2,
+"values": [ "pre_tear", "tear_2" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("attacks/aoe0:monitoring")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 0.4, 0.5 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("attacks/aoe1:monitoring")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0, 0.5, 0.6 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("attacks/aoe2:monitoring")
+tracks/5/interp = 1
+tracks/5/imported = false
+tracks/5/keys = {
+"times": FloatArray( 0, 0.6, 0.7 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("attacks/aoe3:monitoring")
+tracks/6/interp = 1
+tracks/6/imported = false
+tracks/6/keys = {
+"times": FloatArray( 0, 0.7, 0.8 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="SampleLibrary" id=10]
+
+samples/pre_tear = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
+}
+samples/tear_1 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 4 )
+}
+samples/tear_2 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 5 )
+}
+
+[node name="tear_2" type="Node2D"]
+
+script/script = ExtResource( 1 )
+damage = 30
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+hframes = 10
+
+[node name="attacks" type="Node2D" parent="."]
+
+[node name="aoe0" type="Area2D" parent="attacks"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 2 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 3 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/2/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+monitoring = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="attacks/aoe0"]
+
+build_mode = 0
+polygon = Vector2Array( -0.969559, 0.762733, -11.2221, 2.47148, -9.37091, 18.7046, -4.24466, 45.7598, 1.16638, 28.6723, 3.8719, 41.3455, 10.9917, 19.9862, 13.4124, 9.16408 )
+shape_range = Vector2( 0, 2 )
+trigger = false
+
+[node name="aoe1" type="Area2D" parent="attacks"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 5 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 6 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/2/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+monitoring = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="attacks/aoe1"]
+
+build_mode = 0
+polygon = Vector2Array( 5.72305, -31.1339, -10.6525, -26.1501, -10.9373, -0.234032, -1.25435, 22.2645, 4.86867, -2.51237, 9.99492, 26.5364, 15.5484, -16.8943, 12.8428, -25.1533 )
+shape_range = Vector2( 0, 2 )
+trigger = false
+
+[node name="aoe2" type="Area2D" parent="attacks"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 7 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+monitoring = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="attacks/aoe2"]
+
+build_mode = 0
+polygon = Vector2Array( -0.399971, -66.5905, -10.7949, -40.6744, -11.1217, -1.87052, 0.958481, 0.699726, 15.6089, -12.023, 14.5808, -42.7374 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="aoe3" type="Area2D" parent="attacks"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 8 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+monitoring = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="attacks/aoe3"]
+
+build_mode = 0
+polygon = Vector2Array( -1.74593, -80.8333, -13.3994, -40.8783, -10.3077, -12.8148, 1.58365, 3.35748, 15.3776, -17.3335, 10.3833, -62.0449 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="anim" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/auto = SubResource( 9 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "auto"
+
+[node name="SamplePlayer" type="SamplePlayer" parent="."]
+
+config/polyphony = 2
+config/samples = SubResource( 10 )
+default/volume_db = 0.0
+default/pitch_scale = 1.0
+default/pan = 0.0
+default/depth = 0.0
+default/height = 0.0
+default/filter/type = 0
+default/filter/cutoff = 5000.0
+default/filter/resonance = 1.0
+default/filter/gain = 1.0
+default/reverb_room = 2
+default/reverb_send = 0.0
+default/chorus_send = 0.0
+
+

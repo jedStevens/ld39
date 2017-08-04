@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://player/select_block.gd" type="Script" id=1]
+[ext_resource path="res://ui/white_pixel.png" type="Texture" id=2]
+
+[node name="select_block" type="Node2D"]
+
+script/script = ExtResource( 1 )
+selected = false
+
+[node name="bg" type="Sprite" parent="."]
+
+transform/scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
+centered = false
+modulate = Color( 0.308594, 0.0494232, 0.0494232, 1 )
+
+[node name="selected" type="Sprite" parent="."]
+
+transform/pos = Vector2( 1, 1 )
+texture = ExtResource( 2 )
+centered = false
+
+

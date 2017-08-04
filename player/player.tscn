@@ -1,0 +1,157 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://player/player.gd" type="Script" id=1]
+[ext_resource path="res://player/select_block.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/player.png" type="Texture" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 10.0
+height = 18.0
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "death"
+length = 0.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("skin:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13, 14 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visibility/visible")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=3]
+
+length = 1.25
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("skin:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visibility/visible")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+
+length = 1.25
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("skin:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7, 8, 9 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visibility/visible")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="player" type="KinematicBody2D" groups=[
+"player",
+]]
+
+visibility/visible = false
+transform/pos = Vector2( 0, -7 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 1, 8 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+power_bar = null
+select_block_scn = ExtResource( 2 )
+number_of_blocks = 24
+block_distance = 24
+double_jump = false
+invul_colors = null
+
+[node name="skin" type="Sprite" parent="."]
+
+transform/pos = Vector2( -1, 5 )
+texture = ExtResource( 3 )
+vframes = 3
+hframes = 5
+frame = 14
+
+[node name="anim" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/death = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/move = SubResource( 4 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "idle"
+
+[node name="blocks" type="Node2D" parent="."]
+
+transform/pos = Vector2( 0, 2 )
+z/z = 11
+z/relative = false
+
+[node name="walk_box" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 1, 8 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+transform/pos = Vector2( 0, 26 )
+enabled = true
+cast_to = Vector2( 0, 3 )
+layer_mask = 1
+type_mask = 15
+
+[connection signal="on_selection" from="." to="." method="cast_weapon"]
+
+
