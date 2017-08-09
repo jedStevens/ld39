@@ -50,6 +50,7 @@ trigger = false
 [node name="sprite" type="Sprite" parent="."]
 
 transform/pos = Vector2( -0.0550164, 4.9997 )
+z/z = -2
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 6
@@ -67,6 +68,7 @@ __meta__ = {
 
 visibility/opacity = 0.25
 transform/pos = Vector2( -0.0550164, 4.9997 )
+z/z = -2
 config/amount = 12
 config/lifetime = 0.4
 config/process_mode = 1

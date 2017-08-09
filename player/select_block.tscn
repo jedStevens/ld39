@@ -10,6 +10,7 @@ selected = false
 
 [node name="bg" type="Sprite" parent="."]
 
+transform/pos = Vector2( -1.5, -1.5 )
 transform/scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 centered = false
@@ -17,7 +18,7 @@ modulate = Color( 0.308594, 0.0494232, 0.0494232, 1 )
 
 [node name="selected" type="Sprite" parent="."]
 
-transform/pos = Vector2( 1, 1 )
+transform/pos = Vector2( -0.5, -0.5 )
 texture = ExtResource( 2 )
 centered = false
 

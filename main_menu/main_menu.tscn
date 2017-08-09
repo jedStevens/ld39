@@ -14,9 +14,9 @@
 [ext_resource path="res://credits_bg.png" type="Texture" id=12]
 [ext_resource path="res://main_menu/star.png" type="Texture" id=13]
 [ext_resource path="res://noise.tscn" type="PackedScene" id=14]
-[ext_resource path="res://camera.tscn" type="PackedScene" id=15]
-[ext_resource path="res://main_menu/theme.ogg" type="AudioStream" id=16]
-[ext_resource path="res://ui/hover.wav" type="Sample" id=17]
+[ext_resource path="res://main_menu/theme.ogg" type="AudioStream" id=15]
+[ext_resource path="res://ui/hover.wav" type="Sample" id=16]
+[ext_resource path="res://camera.tscn" type="PackedScene" id=17]
 
 [sub_resource type="CanvasItemShader" id=1]
 
@@ -167,7 +167,7 @@ samples/hover = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 17 )
+"sample": ExtResource( 16 )
 }
 
 [node name="root" type="Node2D"]
@@ -184,7 +184,7 @@ modulate = Color( 0, 0, 0, 0.388 )
 
 [node name="panel" type="TabContainer" parent="."]
 
-visibility/opacity = 0.0
+editor/display_folded = true
 visibility/self_opacity = 0.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -476,11 +476,9 @@ z/z = -3
 transform/pos = Vector2( 41, -64 )
 z/z = 2
 texture = ExtResource( 13 )
-modulate = Color( 1, 1, 1, 0.103843 )
+modulate = Color( 1, 1, 1, 0.387961 )
 
 [node name="noise" parent="." instance=ExtResource( 14 )]
-
-[node name="camera" parent="." instance=ExtResource( 15 )]
 
 [node name="anim" type="AnimationPlayer" parent="."]
 
@@ -497,7 +495,7 @@ autoplay = "lead_in"
 
 [node name="StreamPlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 16 )
+stream/stream = ExtResource( 15 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0
@@ -522,6 +520,8 @@ default/filter/gain = 1.0
 default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
+
+[node name="camera" parent="." instance=ExtResource( 17 )]
 
 [connection signal="pressed" from="panel/main_panel/textures/play" to="." method="_on_play_pressed"]
 

@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export(float) var move_speed = 120
-export(float) var time = 0.4
+export(float) var time = 0.75
 var timer = 0
 var direction = Vector2(0,0)
 var gamma = 2

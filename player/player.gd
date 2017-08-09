@@ -9,9 +9,9 @@ export(int) var block_distance = 24
 export(bool) var double_jump = false
 var has_double_jump = false
 
-var jump_height = 150
+var jump_height = 165
 
-var move_speed = 128
+var move_speed = 175
 var block_chain = [] #selection blocks
 
 var next_sword_is_block = false # next sword is in block mode
@@ -31,6 +31,9 @@ var invul_timer = 0
 
 var last_damage = 0
 var recent_damage = 0
+
+
+var sword_power_cost = 10
 
 export(ColorRamp) var invul_colors
 
@@ -205,7 +208,7 @@ func cast_weapon(chain):
 		new_sword.direction = Vector2(sin(deg2rad(chain[-1])), cos(deg2rad(chain[-1])))
 		next_sword_is_block = false
 		get_node("..").add_child(new_sword)
-		get_node(power_bar).burst(15)
+		get_node(power_bar).burst(sword_power_cost)
 	
 	if player.weapon == player.ARROW:
 		var new_arrow = preload("res://player/arrow.tscn").instance()
@@ -250,7 +253,7 @@ func can_jump():
 
 func damage(d, cause):
 	var blood_node = preload("res://player/blood.tscn").instance()
-	blood_node.set_rot(cause.get_rot())
+	blood_node.set_rot(cause.get_rot() + randf() * PI - PI/2)
 	blood_node.emit_blood()
 	add_child(blood_node)
 	if d > recent_damage and invul_timer <= 0:

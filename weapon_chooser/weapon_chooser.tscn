@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://weapon_chooser/weapon_chooser.gd" type="Script" id=1]
 [ext_resource path="res://weapon_chooser/please_choose.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://weapon_chooser/sword.png" type="Texture" id=9]
 [ext_resource path="res://weapon_chooser/sword_p.png" type="Texture" id=10]
 [ext_resource path="res://weapon_chooser/instructions.png" type="Texture" id=11]
+[ext_resource path="res://camera.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
 
@@ -80,7 +81,6 @@ tracks/2/keys = {
 
 [node name="chooser" type="Control"]
 
-visibility/opacity = 0.9
 rect/scale = Vector2( 2, 2 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -108,7 +108,7 @@ centered = false
 stream/stream = ExtResource( 4 )
 stream/play = false
 stream/loop = true
-stream/volume_db = -8.0
+stream/volume_db = 0.0
 stream/autoplay = true
 stream/paused = false
 stream/loop_restart_time = 0.0
@@ -190,6 +190,10 @@ params/stretch_mode = 0
 
 transform/pos = Vector2( 161, 167.5 )
 texture = ExtResource( 11 )
+
+[node name="camera" parent="." instance=ExtResource( 12 )]
+
+zoom = Vector2( 1, 1 )
 
 [connection signal="pressed" from="arrow" to="." method="_on_arrow_pressed"]
 

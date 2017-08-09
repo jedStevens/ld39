@@ -36,8 +36,8 @@ collision/layers = 2
 collision/mask = 2
 collision/margin = 0.08
 script/script = ExtResource( 1 )
-move_speed = 250.0
-time = 0.4
+move_speed = 275.0
+time = 0.75
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 

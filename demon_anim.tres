@@ -1,0 +1,82 @@
+[gd_resource type="Animation" format=1]
+
+[resource]
+
+length = 70.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 2 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("world/overlay:visibility/opacity")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 2 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("world/intro_demon:transform/pos")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 2, 3, 5, 8, 11, 35, 39, 41, 44, 45, 47, 70 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 162, 79 ), Vector2( 162, 79 ), Vector2( 425.356, 79 ), Vector2( 425.356, 79 ), Vector2( -119.356, 79 ), Vector2( -119.356, 79 ), Vector2( 430.464, 79 ), Vector2( 430.464, 79 ), Vector2( 162.402, 79 ), Vector2( 162.388, 79 ), Vector2( 162.359, -72.8412 ), Vector2( 162.359, -72.8412 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("world/intro_demon/anim")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 1.6, 8, 35, 41, 45 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ "reveal" ],
+"method": "play"
+}, {
+"args": [ "reveal" ],
+"method": "play"
+}, {
+"args": [ "reveal" ],
+"method": "play"
+}, {
+"args": [ "reveal" ],
+"method": "play"
+}, {
+"args": [ "fade" ],
+"method": "play"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("world/intro_demon:visibility/opacity")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 2 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("world/intro_demon:visibility/self_opacity")
+tracks/5/interp = 1
+tracks/5/imported = false
+tracks/5/keys = {
+"times": FloatArray( 2 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+

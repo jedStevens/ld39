@@ -18,10 +18,12 @@ func _process(delta):
 	if hits_needed_to_level_up <= 0:
 		current_level += 1
 		if current_level >= max_level:
-			get_node("anim").play("win")
+			get_node("../anim").play("win")
 			set_process(false)
 		else:
 			hits_needed_to_level_up = player.HITS_PER_LEVEL[current_level]
+			var difficulty_factor = 1 + current_level/3*1.65
+			get_tree().call_group(0, "boss_anim", "set_speed", difficulty_factor)
 	get_node("hits").set_skulls(hits_needed_to_level_up)
 
 func tear():
@@ -37,29 +39,36 @@ func pillar_tear():
 
 func _on_eye_area_R_body_enter( body ):
 	if body.is_in_group("player_weapon"):
-		hit_demon()
+		hit_demon(body)
 		body.queue_free()
 
 func _on_eye_area_L_body_enter( body ):
 	if body.is_in_group("player_weapon"):
-		hit_demon()
+		hit_demon(body)
 		body.queue_free()
 
-func hit_demon():
+func hit_demon(cause=null):
 	if demon_hit_timer <= 0:
 		hits_needed_to_level_up -= player.damage
 		demon_hits += 1
 		get_node("intro_demon/sfx").play("pain")
 		demon_hit_timer = demon_hit_delay
 		get_node("intro_demon/anim").play("fade")
-		get_node("anim").set_speed(1 + current_level/3*1.65)
+		var difficulty_factor = 1 + current_level/3*1.65 + (player.HITS_PER_LEVEL[current_level] - hits_needed_to_level_up) / float(player.HITS_PER_LEVEL[current_level]) * 0.05
+		get_tree().call_group(0, "boss_anim", "set_speed", difficulty_factor)
+		if cause != null:
+			var blood = preload("res://demon/demon_blood.tscn").instance()
+			blood.set_rot(cause.get_rot())
+			blood.set_pos(cause.get_pos())
+			get_node("blood").add_child(blood)
+			print("add blood")
 
 
 func _on_bar_death():
 	if not get_node("player").dead:
 		get_node("player").kill()
-		get_node("anim").set_speed(1)
-		get_node("anim").play("death")
+		get_node("../anim").set_speed(1)
+		get_node("../anim").play("death")
 		get_node("music").stop()
 
 func to_weapons():

@@ -7,6 +7,7 @@ func _on_credits_pressed():
 
 func _ready():
 	set_process(true)
+		
 
 func _process(delta):
 	get_node("panel").set_size(get_viewport_rect().size*get_node("camera").get_zoom())

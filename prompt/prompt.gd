@@ -33,8 +33,6 @@ func write_res(text, type=NORMAL):
 	get_node("response").set_text(text)
 	
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	set_process(true)
 	set_process_input(true)
 	write_res("Dreamlight Console v0.1")
@@ -58,7 +56,7 @@ func _input(event):
 					command += RawArray([event.unicode]).get_string_from_utf8()
 
 func _process(delta):
-	if showing:
+	if showing and OS.is_debug_build():
 		set_opacity(1)
 		get_node("command").set_text(command)
 		

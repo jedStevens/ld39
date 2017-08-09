@@ -17,7 +17,7 @@ func check_for_player():
 		for area in get_node("attacks").get_children():
 			
 			if area.overlaps_body(player.body):
-				player.body.damage(damage* (0 if already_hit_player else 1), area)
+				player.body.damage(damage* (0 if already_hit_player else 1), self)
 				
 				already_hit_player = true
 				break
