@@ -1,10 +1,27 @@
+tool
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+func _on_credits_pressed():
+	on_action()
+	get_node("camera").set_lerp_target(get_node("credits").get_pos())
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
+	set_process(true)
+		
+
+func _process(delta):
 	pass
+
+func _on_back_pressed():
+	on_action()
+	get_node("camera").set_lerp_target(get_node("main_pos").get_pos())
+	
+func _on_play_pressed():
+	on_action()
+	get_node("save_n_load").popup()
+
+func on_action():
+	get_node("sfx").play("hover")
+
+func on_lead_out_completed():
+	get_tree().change_scene("res://intro_cin/intro_cinematic.tscn")

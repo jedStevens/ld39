@@ -1,5 +1,8 @@
 extends Camera2D
 
+var lerp_target = Vector2(0,0)
+var lerp_speed = 1.0
+
 var scenes = {"game" : "res://game.tscn",
 "menu" : "res://main_menu/main_menu.tscn",
 "win" : "res://win_screen/win_screen.tscn"}
@@ -15,7 +18,10 @@ func set_scene(cmd):
 	get_tree().change_scene(scenes[cmd[1]])
 
 func _ready():
-	pass
+	set_process(true)
+
+func _process(delta):
+	set_pos(get_pos().linear_interpolate(lerp_target, lerp_speed * delta))
 
 func _on_bg_on_command( cmd ):
 	var command = []
@@ -37,4 +43,8 @@ func set_player_damage(cmd):
 			player.damage = new_damage
 			get_node("term").write_res("[v] Damage is now " +str(player.damage), 3)
 	else:
-		
+		pass
+
+func set_lerp_target(pos, speed=1.0):
+	lerp_target = pos
+	lerp_speed = speed

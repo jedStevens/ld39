@@ -1,493 +1,309 @@
-[gd_scene load_steps=24 format=1]
+[gd_scene load_steps=19 format=1]
 
-[ext_resource path="res://main_menu.gd" type="Script" id=1]
-[ext_resource path="res://main_menu/noise.png" type="Texture" id=2]
-[ext_resource path="res://main_menu/moon.png" type="Texture" id=3]
+[ext_resource path="res://main_menu/main_menu.gd" type="Script" id=1]
+[ext_resource path="res://main_menu/moon.png" type="Texture" id=2]
+[ext_resource path="res://main_menu/star.png" type="Texture" id=3]
 [ext_resource path="res://main_menu/title.png" type="Texture" id=4]
-[ext_resource path="res://main_menu/play.png" type="Texture" id=5]
-[ext_resource path="res://main_menu/play_pressed.png" type="Texture" id=6]
-[ext_resource path="res://main_menu/play_hover.png" type="Texture" id=7]
-[ext_resource path="res://main_menu/credits.png" type="Texture" id=8]
-[ext_resource path="res://main_menu/credits_press.png" type="Texture" id=9]
-[ext_resource path="res://main_menu/credits_hover.png" type="Texture" id=10]
-[ext_resource path="res://ui/back.tscn" type="PackedScene" id=11]
-[ext_resource path="res://credits_bg.png" type="Texture" id=12]
-[ext_resource path="res://main_menu/star.png" type="Texture" id=13]
-[ext_resource path="res://noise.tscn" type="PackedScene" id=14]
-[ext_resource path="res://main_menu/theme.ogg" type="AudioStream" id=15]
-[ext_resource path="res://ui/hover.wav" type="Sample" id=16]
-[ext_resource path="res://camera.tscn" type="PackedScene" id=17]
+[ext_resource path="res://ui/dream_theme.tres" type="Theme" id=5]
+[ext_resource path="res://main_menu/credits_section/bg.png" type="Texture" id=6]
+[ext_resource path="res://ui/ui_font.tres" type="DynamicFont" id=7]
+[ext_resource path="res://ui/hover_label.gd" type="Script" id=8]
+[ext_resource path="res://main_menu/theme.ogg" type="AudioStream" id=9]
+[ext_resource path="res://ui/hover.wav" type="Sample" id=10]
+[ext_resource path="res://camera.tscn" type="PackedScene" id=11]
 
-[sub_resource type="CanvasItemShader" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 
-_code = {
-"fragment": "uniform texture texture_noise;
+custom_solver_bias = 0.0
+points = Vector2Array( 178, 173, 178, 174, 172, 186, 151, 183, 148, 172, 174, 171 )
 
-COLOR = tex(texture_noise, vec2(mod(UV.x - TIME * 0.003, 1.0), UV.y));",
-"fragment_ofs": 0,
-"light": "",
-"light_ofs": 0,
-"vertex": "",
-"vertex_ofs": 0
-}
+[sub_resource type="ConvexPolygonShape2D" id=2]
 
-[sub_resource type="CanvasItemMaterial" id=2]
+custom_solver_bias = 0.0
+points = Vector2Array( 174, 171, 148, 172, 146, 137, 177, 133 )
 
-shader/shader = SubResource( 1 )
-shader/shading_mode = 0
-shader_param/texture_noise = ExtResource( 2 )
+[sub_resource type="ConvexPolygonShape2D" id=3]
 
-[sub_resource type="Animation" id=3]
+custom_solver_bias = 0.0
+points = Vector2Array( 165, 110, 177, 129, 177, 133, 146, 137, 145, 133, 145, 131, 146, 129, 157, 109, 164, 109 )
+
+[sub_resource type="Animation" id=4]
 
 length = 6.0
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("anim_offset/star:transform/pos")
+tracks/0/path = NodePath("star:transform/pos")
 tracks/0/interp = 2
 tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0, 3 ),
-"transitions": FloatArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 41, -63 ), Vector2( 41, -59 ) ]
-}
+tracks/0/keys = { "times":FloatArray( 0, 3 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 41, -63 ), Vector2( 41, -59 ) ] }
 tracks/1/type = "value"
-tracks/1/path = NodePath("anim_offset/star:modulate")
+tracks/1/path = NodePath("star:modulate")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = {
-"times": FloatArray( 0, 0.5, 1, 1.4, 2, 3.8, 4.1, 4.2, 4.33719, 4.8, 5.3, 5.58204, 5.9 ),
-"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.322392 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.322392 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.322392 ), Color( 1, 1, 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-
-resource/name = "lead_in"
-length = 5.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("panel:visibility/opacity")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0, 5 ),
-"transitions": FloatArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1.0 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath("anim")
-tracks/1/interp = 1
-tracks/1/imported = false
-tracks/1/keys = {
-"times": FloatArray( 5 ),
-"transitions": FloatArray( 1 ),
-"values": [ {
-"args": [ "default" ],
-"method": "play"
-} ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("anim_offset/star:modulate")
-tracks/2/interp = 1
-tracks/2/imported = false
-tracks/2/keys = {
-"times": FloatArray( 0, 5 ),
-"transitions": FloatArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0.103843 ), Color( 1, 1, 1, 0.387961 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("anim_offset/star:transform/pos")
-tracks/3/interp = 1
-tracks/3/imported = false
-tracks/3/keys = {
-"times": FloatArray( 1, 2.5, 3.9, 5 ),
-"transitions": FloatArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 41, -60 ), Vector2( 41, -64 ), Vector2( 41, -60 ), Vector2( 41, -64 ) ]
-}
+tracks/1/keys = { "times":FloatArray( 0, 0.5, 1, 1.4, 2, 3.8, 4.1, 4.2, 4.33719, 4.8, 5.3, 5.58204, 5.9 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ), "update":0, "values":[ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.322392 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.322392 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.322392 ), Color( 1, 1, 1, 1 ) ] }
 
 [sub_resource type="Animation" id=5]
 
-resource/name = "lead_out"
+length = 5.0
+loop = false
+step = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath("anim")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 5 ), "transitions":FloatArray( 1 ), "values":[ { "args":[ "default" ], "method":"play" } ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("star:modulate")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0, 5 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Color( 1, 1, 1, 0.103843 ), Color( 1, 1, 1, 0.387961 ) ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("star:transform/pos")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = { "times":FloatArray( 1, 2.5, 3.9, 5 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ Vector2( 41, -60 ), Vector2( 41, -64 ), Vector2( 41, -60 ), Vector2( 41, -64 ) ] }
+
+[sub_resource type="Animation" id=6]
+
 length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("anim_offset/star:modulate")
+tracks/0/path = NodePath("star:modulate")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0, 1 ),
-"transitions": FloatArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0.103843 ), Color( 1, 1, 1, 0.387961 ) ]
-}
+tracks/0/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Color( 1, 1, 1, 0.103843 ), Color( 1, 1, 1, 0.387961 ) ] }
 tracks/1/type = "value"
-tracks/1/path = NodePath("anim_offset/star:transform/pos")
+tracks/1/path = NodePath("star:transform/pos")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = {
-"times": FloatArray( 1 ),
-"transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ Vector2( 41, -64 ) ]
-}
+tracks/1/keys = { "times":FloatArray( 1 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( 41, -64 ) ] }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/imported = false
-tracks/2/keys = {
-"times": FloatArray( 1 ),
-"transitions": FloatArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "on_lead_out_completed"
-} ]
-}
+tracks/2/keys = { "times":FloatArray( 1 ), "transitions":FloatArray( 1 ), "values":[ { "args":[  ], "method":"on_lead_out_completed" } ] }
 tracks/3/type = "value"
 tracks/3/path = NodePath(".:visibility/opacity")
 tracks/3/interp = 1
 tracks/3/imported = false
-tracks/3/keys = {
-"times": FloatArray( 0, 1 ),
-"transitions": FloatArray( 1, 1 ),
-"update": 0,
-"values": [ 1.0, 0.0 ]
-}
+tracks/3/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 1.0, 0.0 ] }
 
-[sub_resource type="SampleLibrary" id=6]
+[sub_resource type="SampleLibrary" id=7]
 
-samples/hover = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 16 )
-}
+samples/hover = { "db":0.0, "pitch":1.0, "sample":ExtResource( 10 ) }
 
 [node name="root" type="Node2D"]
 
 script/script = ExtResource( 1 )
+__meta__ = { "_edit_lock_":true }
 
-[node name="noise1" type="Sprite" parent="."]
+[node name="moon" type="Sprite" parent="."]
 
-material/material = SubResource( 2 )
-transform/pos = Vector2( 151.137, 101.987 )
-transform/scale = Vector2( 2, 1 )
+transform/pos = Vector2( 30.5, 60.1354 )
+transform/scale = Vector2( 0.364583, 0.364583 )
 texture = ExtResource( 2 )
-modulate = Color( 0, 0, 0, 0.388 )
 
-[node name="panel" type="TabContainer" parent="."]
+[node name="star" type="Sprite" parent="."]
 
-editor/display_folded = true
-visibility/self_opacity = 0.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 320.0
-margin/bottom = 200.0
-tab_align = 1
-tabs_visible = false
-
-[node name="main_panel" type="HBoxContainer" parent="panel"]
-
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 4.0
-margin/top = 8.0
-margin/right = 4.0
-margin/bottom = 4.0
-alignment = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="panel/main_panel"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 96.0
-margin/bottom = 188.0
-alignment = 0
-
-[node name="Control4" type="Control" parent="panel/main_panel/VBoxContainer"]
-
-rect/min_size = Vector2( 0, 16 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 96.0
-margin/bottom = 16.0
-
-[node name="moon" type="TextureFrame" parent="panel/main_panel/VBoxContainer"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 20.0
-margin/right = 96.0
-margin/bottom = 115.0
+transform/pos = Vector2( 202, 45 )
+z/z = 2
 texture = ExtResource( 3 )
-stretch_mode = 0
+modulate = Color( 1, 1, 1, 0.387961 )
 
-[node name="textures" type="VBoxContainer" parent="panel/main_panel"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 100.0
-margin/top = 0.0
-margin/right = 307.0
-margin/bottom = 188.0
-alignment = 0
-
-[node name="Control3" type="Control" parent="panel/main_panel/textures"]
-
-rect/min_size = Vector2( 0, 16 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 207.0
-margin/bottom = 16.0
-
-[node name="title_text" type="TextureFrame" parent="panel/main_panel/textures"]
+[node name="title_text" type="TextureFrame" parent="."]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 20.0
-margin/right = 207.0
-margin/bottom = 68.0
+margin/left = 57.0
+margin/top = 41.0
+margin/right = 264.0
+margin/bottom = 89.0
 texture = ExtResource( 4 )
 stretch_mode = 0
 
-[node name="Control" type="Control" parent="panel/main_panel/textures"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 3
-margin/left = 0.0
-margin/top = 72.0
-margin/right = 207.0
-margin/bottom = 112.0
-
-[node name="play" type="TextureButton" parent="panel/main_panel/textures"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 116.0
-margin/right = 207.0
-margin/bottom = 140.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-textures/normal = ExtResource( 5 )
-textures/pressed = ExtResource( 6 )
-textures/hover = ExtResource( 7 )
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="credits" type="TextureButton" parent="panel/main_panel/textures"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 144.0
-margin/right = 207.0
-margin/bottom = 168.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-textures/normal = ExtResource( 8 )
-textures/pressed = ExtResource( 9 )
-textures/hover = ExtResource( 10 )
-params/resize_mode = 0
-params/stretch_mode = 0
-
-[node name="Control 2" type="Control" parent="panel/main_panel/textures"]
-
-rect/min_size = Vector2( 0, 16 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 172.0
-margin/right = 207.0
-margin/bottom = 188.0
-
-[node name="Control" type="HBoxContainer" parent="panel"]
-
-editor/display_folded = true
-visibility/visible = false
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 4.0
-margin/top = 8.0
-margin/right = 4.0
-margin/bottom = 4.0
-alignment = 0
-
-[node name="Control1" type="Control" parent="panel/Control"]
-
-rect/min_size = Vector2( 12, 16 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 12.0
-margin/bottom = 200.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="panel/Control"]
-
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 16.0
+margin/left = 0.0
 margin/top = 0.0
-margin/right = 87.0
-margin/bottom = 200.0
+margin/right = 40.0
+margin/bottom = 40.0
 alignment = 0
 
-[node name="Control" type="Control" parent="panel/Control/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
-size_flags/vertical = 3
+size_flags/vertical = 2
+theme/theme = ExtResource( 5 )
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 71.0
-margin/bottom = 152.0
+margin/right = 3.0
+margin/bottom = 40.0
 
-[node name="back" parent="panel/Control/VBoxContainer" instance=ExtResource( 11 )]
+[node name="VSeparator1" type="VSeparator" parent="HBoxContainer"]
 
-margin/top = 156.0
-margin/right = 71.0
-margin/bottom = 180.0
-
-[node name="Control2" type="Control" parent="panel/Control/VBoxContainer"]
-
-rect/min_size = Vector2( 16, 16 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+theme/theme = ExtResource( 5 )
+margin/left = 7.0
+margin/top = 0.0
+margin/right = 10.0
+margin/bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 133.0
+margin/top = 83.0
+margin/right = 181.0
+margin/bottom = 133.0
+alignment = 0
+
+[node name="new" type="Button" parent="VBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 5 )
 margin/left = 0.0
-margin/top = 184.0
-margin/right = 71.0
-margin/bottom = 200.0
+margin/top = 0.0
+margin/right = 48.0
+margin/bottom = 14.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "New Game"
+flat = false
+__meta__ = { "_edit_lock_":true }
 
-[node name="Control3" type="Control" parent="panel/Control"]
+[node name="play" type="Button" parent="VBoxContainer"]
 
-rect/min_size = Vector2( 12, 16 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 91.0
-margin/top = 0.0
-margin/right = 103.0
-margin/bottom = 200.0
+theme/theme = ExtResource( 5 )
+margin/left = 0.0
+margin/top = 18.0
+margin/right = 48.0
+margin/bottom = 32.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Play"
+flat = false
+__meta__ = { "_edit_lock_":true }
 
-[node name="CenterContainer" type="CenterContainer" parent="panel/Control"]
+[node name="to_credits" type="Button" parent="VBoxContainer"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 107.0
-margin/top = 0.0
+theme/theme = ExtResource( 5 )
+margin/left = 0.0
+margin/top = 36.0
+margin/right = 48.0
+margin/bottom = 50.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Credits"
+flat = false
+__meta__ = { "_edit_lock_":true }
+
+[node name="back" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 5 )
+margin/left = 230.0
+margin/top = 369.0
 margin/right = 278.0
-margin/bottom = 200.0
-use_top_left = false
+margin/bottom = 383.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Back"
+flat = false
 
-[node name="TextureFrame" type="TextureFrame" parent="panel/Control/CenterContainer"]
+[node name="credits" type="Node2D" parent="."]
+
+transform/pos = Vector2( 0, 200 )
+
+[node name="sword" type="Sprite" parent="credits"]
+
+transform/pos = Vector2( 160, 150 )
+texture = ExtResource( 6 )
+
+[node name="hover_label" type="Label" parent="credits"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 20.0
-margin/right = 171.0
-margin/bottom = 180.0
-texture = ExtResource( 12 )
-stretch_mode = 0
+size_flags/vertical = 0
+margin/left = 67.0
+margin/top = 88.0
+margin/right = 274.0
+margin/bottom = 123.0
+custom_fonts/font = ExtResource( 7 )
+text = "A Game by W. J. Stevens\n2017"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script/script = ExtResource( 8 )
+transition_speed = 2.0
 
-[node name="Control2" type="Control" parent="panel/Control"]
+[node name="Area2D" type="Area2D" parent="credits"]
 
-rect/min_size = Vector2( 12, 16 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 282.0
-margin/top = 0.0
-margin/right = 294.0
-margin/bottom = 200.0
+editor/display_folded = true
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 2 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 3 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/2/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
 
-[node name="anim_offset" type="Node2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="credits/Area2D"]
 
-transform/pos = Vector2( 207, 96 )
-z/z = -3
-
-[node name="star" type="Sprite" parent="anim_offset"]
-
-transform/pos = Vector2( 41, -64 )
-z/z = 2
-texture = ExtResource( 13 )
-modulate = Color( 1, 1, 1, 0.387961 )
-
-[node name="noise" parent="." instance=ExtResource( 14 )]
+build_mode = 0
+polygon = Vector2Array( 164, 109, 157, 109, 146, 129, 145, 131, 145, 133, 146, 137, 148, 172, 151, 183, 172, 186, 178, 174, 178, 173, 174, 171, 177, 133, 177, 129, 165, 110 )
+shape_range = Vector2( 0, 2 )
+trigger = false
 
 [node name="anim" type="AnimationPlayer" parent="."]
 
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/default = SubResource( 3 )
-anims/lead_in = SubResource( 4 )
-anims/lead_out = SubResource( 5 )
+anims/default = SubResource( 4 )
+anims/lead_in = SubResource( 5 )
+anims/lead_out = SubResource( 6 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -495,7 +311,7 @@ autoplay = "lead_in"
 
 [node name="StreamPlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 15 )
+stream/stream = ExtResource( 9 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0
@@ -507,7 +323,7 @@ stream/buffering_ms = 500
 [node name="sfx" type="SamplePlayer" parent="."]
 
 config/polyphony = 1
-config/samples = SubResource( 6 )
+config/samples = SubResource( 7 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0
@@ -521,12 +337,36 @@ default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
 
-[node name="camera" parent="." instance=ExtResource( 17 )]
+[node name="main_pos" type="Position2D" parent="."]
 
-[connection signal="pressed" from="panel/main_panel/textures/play" to="." method="_on_play_pressed"]
+__meta__ = { "_edit_lock_":true }
 
-[connection signal="pressed" from="panel/main_panel/textures/credits" to="." method="_on_credits_pressed"]
+[node name="camera" parent="." instance=ExtResource( 11 )]
 
-[connection signal="pressed" from="panel/Control/VBoxContainer/back" to="." method="_on_back_pressed"]
+[node name="save_n_load" type="ConfirmationDialog" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 71.0
+margin/top = 81.0
+margin/right = 245.0
+margin/bottom = 128.0
+popup/exclusive = false
+window/title = "New / Continue"
+dialog/text = "Would you like to start new a game\?"
+dialog/hide_on_ok = true
+
+[connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
+
+[connection signal="pressed" from="VBoxContainer/to_credits" to="." method="_on_credits_pressed"]
+
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]
+
+[connection signal="mouse_enter" from="credits/Area2D" to="credits/hover_label" method="_on_mouse_enter"]
+
+[connection signal="mouse_exit" from="credits/Area2D" to="credits/hover_label" method="_on_mouse_exit"]
 
 

@@ -1,0 +1,93 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://ui/theme_style/button/button_theme.tres" type="Theme" id=1]
+
+[node name="Control" type="Control"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+theme/theme = ExtResource( 1 )
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 600.0
+margin/bottom = 360.0
+
+[node name="Button" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+theme/theme = ExtResource( 1 )
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 12.0
+margin/bottom = 22.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+theme/theme = ExtResource( 1 )
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 133.0
+margin/bottom = 83.0
+use_top_left = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 1
+size_flags/vertical = 1
+theme/theme = ExtResource( 1 )
+margin/left = 56.0
+margin/top = 30.0
+margin/right = 76.0
+margin/bottom = 52.0
+alignment = 0
+
+[node name="Panel" type="Panel" parent="CenterContainer/HBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+theme/theme = ExtResource( 1 )
+margin/left = 0.0
+margin/top = 11.0
+margin/right = 0.0
+margin/bottom = 11.0
+
+[node name="VScrollBar" type="VScrollBar" parent="CenterContainer/HBoxContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+theme/theme = ExtResource( 1 )
+margin/left = 4.0
+margin/top = 0.0
+margin/right = 20.0
+margin/bottom = 22.0
+range/min = 0.0
+range/max = 100.0
+range/step = 0.0
+range/page = 0.0
+range/value = 1.0
+range/exp_edit = false
+range/rounded = false
+custom_step = -1.0
+
+

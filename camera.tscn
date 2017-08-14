@@ -1,15 +1,50 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://camera.gd" type="Script" id=1]
-[ext_resource path="res://noise.tscn" type="PackedScene" id=2]
-[ext_resource path="res://intro_cin/faster_noise.tres" type="CanvasItemMaterial" id=3]
-[ext_resource path="res://prompt/prompt.tscn" type="PackedScene" id=4]
+[ext_resource path="res://prompt/prompt.tscn" type="PackedScene" id=2]
+[ext_resource path="res://camera/noise.png" type="Texture" id=3]
+[ext_resource path="res://camera/noise_alpha.png" type="Texture" id=4]
 [ext_resource path="res://SimpleGodotCRTShader/barrel.tres" type="CanvasItemMaterial" id=5]
 [ext_resource path="res://ui/white_pixel.png" type="Texture" id=6]
 [ext_resource path="res://SimpleGodotCRTShader/bleed.tres" type="CanvasItemMaterial" id=7]
 [ext_resource path="res://SimpleGodotCRTShader/scanlines.tres" type="CanvasItemMaterial" id=8]
 [ext_resource path="res://SimpleGodotCRTShader/crt_shader.tres" type="CanvasItemMaterial" id=9]
 [ext_resource path="res://SimpleGodotCRTShader/CRTViewportDisplay/CRTFrame.png" type="Texture" id=10]
+
+[sub_resource type="CanvasItemShader" id=1]
+
+_code = {
+"fragment": "uniform texture noise_1;
+uniform float scroll_speed_1;
+
+uniform texture noise_2;
+uniform float scroll_speed_2;
+
+uniform float colors;
+
+uniform float size_x;
+uniform float size_y = 1;
+vec4 sample = tex(noise_1, vec2(mod(UV.x + TIME/scroll_speed_1,1.0), UV.y));
+vec4 out = vec4(sample.rgb, tex(noise_2, vec2(UV.x/size_x, mod(UV.y + TIME/scroll_speed_2,1.0)/size_y )).a * sample.a);
+COLOR = out;",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+
+[sub_resource type="CanvasItemMaterial" id=2]
+
+shader/shader = SubResource( 1 )
+shader/shading_mode = 0
+shader_param/noise_1 = ExtResource( 3 )
+shader_param/scroll_speed_1 = 50.0
+shader_param/noise_2 = ExtResource( 4 )
+shader_param/scroll_speed_2 = 70.0
+shader_param/colors = 16.0
+shader_param/size_x = 5.0
+shader_param/size_y = 5.0
 
 [node name="camera" type="Camera2D"]
 
@@ -31,20 +66,30 @@ drag_margin/right = 0.2
 drag_margin/bottom = 0.2
 script/script = ExtResource( 1 )
 
-[node name="noise" parent="." instance=ExtResource( 2 )]
-
-material/material = ExtResource( 3 )
-transform/pos = Vector2( 160, 100 )
-
-[node name="term" parent="." instance=ExtResource( 4 )]
+[node name="term" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 0, 167.845 )
 z/relative = false
 
-[node name="Shaders 2" type="Control" parent="."]
+[node name="noise" type="TextureFrame" parent="."]
 
-focus/ignore_mouse = false
+material/material = SubResource( 2 )
+focus/ignore_mouse = true
 focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 320.0
+margin/bottom = 200.0
+texture = ExtResource( 3 )
+stretch_mode = 0
+
+[node name="crt_fx" type="Control" parent="."]
+
+editor/display_folded = true
+focus/ignore_mouse = true
+focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
@@ -55,7 +100,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Curvature" type="TextureFrame" parent="Shaders 2"]
+[node name="Curvature" type="TextureFrame" parent="crt_fx"]
 
 visibility/visible = false
 material/material = ExtResource( 5 )
@@ -71,7 +116,7 @@ texture = ExtResource( 6 )
 expand = true
 stretch_mode = 2
 
-[node name="ColorBleeding" type="TextureFrame" parent="Shaders 2"]
+[node name="ColorBleeding" type="TextureFrame" parent="crt_fx"]
 
 visibility/visible = false
 material/material = ExtResource( 7 )
@@ -87,8 +132,9 @@ texture = ExtResource( 6 )
 expand = true
 stretch_mode = 2
 
-[node name="ScanLine" type="TextureFrame" parent="Shaders 2"]
+[node name="ScanLine" type="TextureFrame" parent="crt_fx"]
 
+visibility/visible = false
 material/material = ExtResource( 8 )
 focus/ignore_mouse = true
 focus/stop_mouse = false
@@ -102,9 +148,8 @@ texture = ExtResource( 6 )
 expand = true
 stretch_mode = 2
 
-[node name="CRT" type="TextureFrame" parent="Shaders 2"]
+[node name="CRT" type="TextureFrame" parent="crt_fx"]
 
-visibility/visible = false
 visibility/opacity = 0.5
 material/material = ExtResource( 9 )
 focus/ignore_mouse = true
@@ -119,7 +164,7 @@ texture = ExtResource( 6 )
 expand = true
 stretch_mode = 2
 
-[node name="Sprite" type="Sprite" parent="Shaders 2"]
+[node name="Sprite" type="Sprite" parent="crt_fx"]
 
 transform/scale = Vector2( 0.295642, 0.24698 )
 texture = ExtResource( 10 )

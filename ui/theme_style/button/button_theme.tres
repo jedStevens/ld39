@@ -1,0 +1,150 @@
+[gd_resource type="Theme" load_steps=13 format=1]
+
+[ext_resource path="res://ui/ui_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui/theme_style/button/disabled.png" type="Texture" id=2]
+[ext_resource path="res://ui/theme_style/button/hover.png" type="Texture" id=3]
+[ext_resource path="res://ui/theme_style/button/normal.png" type="Texture" id=4]
+[ext_resource path="res://ui/theme_style/button/pressed.png" type="Texture" id=5]
+
+[sub_resource type="StyleBoxTexture" id=1]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 2 )
+margin/left = 3.0
+margin/right = 3.0
+margin/top = 3.0
+margin/bottom = 3.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=2]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 3 )
+margin/left = 3.0
+margin/right = 3.0
+margin/top = 3.0
+margin/bottom = 3.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=3]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 4 )
+margin/left = 4.0
+margin/right = 3.0
+margin/top = 4.0
+margin/bottom = 3.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=4]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 5 )
+margin/left = 3.0
+margin/right = 3.0
+margin/top = 3.0
+margin/bottom = 3.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=5]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 4 )
+margin/left = 3.0
+margin/right = 3.0
+margin/top = 3.0
+margin/bottom = 3.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=6]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 4 )
+margin/left = 3.0
+margin/right = 3.0
+margin/top = 3.0
+margin/bottom = 3.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=7]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 2 )
+margin/left = 3.0
+margin/right = 3.0
+margin/top = 3.0
+margin/bottom = 3.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[resource]
+
+default_font = ExtResource( 1 )
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = ExtResource( 1 )
+Button/styles/disabled = SubResource( 1 )
+Button/styles/focus = null
+Button/styles/hover = SubResource( 2 )
+Button/styles/normal = SubResource( 3 )
+Button/styles/pressed = SubResource( 4 )
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_hilite = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_hilite = null
+VScrollBar/styles/grabber = SubResource( 5 )
+VScrollBar/styles/grabber_hilite = SubResource( 6 )
+VScrollBar/styles/scroll = SubResource( 7 )
+VScrollBar/styles/scroll_focus = null
+

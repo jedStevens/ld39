@@ -1,0 +1,20 @@
+[gd_resource type="CanvasItemShader" format=1]
+
+[resource]
+
+_code = {
+"fragment": "uniform texture texture_noise;
+uniform float loop_time;
+
+vec4 tex_samp = tex(texture_noise, vec2(mod(UV.x - TIME * 0.05, 1.0), UV.y));
+float alpha = 0;
+alpha = mod(TIME * loop_time, 1.0);
+vec4 tex_fixed_alpha = tex_samp * vec4(0,0,0, floor(alpha+tex_samp.r));
+COLOR = tex_fixed_alpha;",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+
