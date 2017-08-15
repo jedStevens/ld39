@@ -18,10 +18,16 @@ func _on_back_pressed():
 	
 func _on_play_pressed():
 	on_action()
-	get_node("save_n_load").popup()
 
 func on_action():
 	get_node("sfx").play("hover")
 
 func on_lead_out_completed():
 	get_tree().change_scene("res://intro_cin/intro_cinematic.tscn")
+
+func _on_quit_pressed():
+	get_tree().quit()
+
+func _on_new_pressed():
+	on_action()
+	get_node("anim").play("lead_out")

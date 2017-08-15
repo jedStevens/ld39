@@ -233,21 +233,21 @@ margin/top = 0.0
 margin/right = 10.0
 margin/bottom = 40.0
 
-[node name="VBoxContainer" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="GridContainer" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 86.0
-margin/top = 114.0
-margin/right = 238.0
-margin/bottom = 128.0
-alignment = 0
+margin/left = 108.0
+margin/top = 102.0
+margin/right = 212.0
+margin/bottom = 134.0
+columns = 2
 
 [node name="new" type="Button" parent="VBoxContainer"]
 
-rect/min_size = Vector2( 48, 0 )
+rect/min_size = Vector2( 50, 0 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -255,7 +255,7 @@ size_flags/vertical = 2
 theme/theme = ExtResource( 5 )
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 48.0
+margin/right = 50.0
 margin/bottom = 14.0
 toggle_mode = false
 enabled_focus_mode = 2
@@ -268,15 +268,15 @@ __meta__ = {
 
 [node name="play" type="Button" parent="VBoxContainer"]
 
-rect/min_size = Vector2( 48, 0 )
+rect/min_size = Vector2( 50, 0 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 theme/theme = ExtResource( 5 )
-margin/left = 52.0
+margin/left = 54.0
 margin/top = 0.0
-margin/right = 100.0
+margin/right = 104.0
 margin/bottom = 14.0
 toggle_mode = false
 enabled_focus_mode = 2
@@ -289,20 +289,41 @@ __meta__ = {
 
 [node name="to_credits" type="Button" parent="VBoxContainer"]
 
-rect/min_size = Vector2( 48, 0 )
+rect/min_size = Vector2( 50, 0 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 theme/theme = ExtResource( 5 )
-margin/left = 104.0
-margin/top = 0.0
-margin/right = 152.0
-margin/bottom = 14.0
+margin/left = 0.0
+margin/top = 18.0
+margin/right = 50.0
+margin/bottom = 32.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 text = "Credits"
+flat = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="quit" type="Button" parent="VBoxContainer"]
+
+rect/min_size = Vector2( 50, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 5 )
+margin/left = 54.0
+margin/top = 18.0
+margin/right = 104.0
+margin/bottom = 32.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Quit"
 flat = false
 __meta__ = {
 "_edit_lock_": true
@@ -336,73 +357,79 @@ transform/pos = Vector2( 159, 170 )
 [node name="0" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -49, 11 )
-transform/rot = 3.69799
+transform/rot = 7.11913
 texture = ExtResource( 6 )
 offset = Vector2( 0.994214, -8.00816 )
 script/script = ExtResource( 7 )
 sway_time = 8.0
 sway_range = 8.0
+sway_offset = -29
 
 [node name="1" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -33, 21 )
-transform/rot = 3.69799
+transform/rot = -7.99004
 texture = ExtResource( 8 )
 offset = Vector2( 0.75958, -10.4126 )
 script/script = ExtResource( 7 )
 sway_time = 8.0
 sway_range = 8.0
+sway_offset = 121
 
 [node name="2" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -30, -4 )
-transform/rot = 3.69799
+transform/rot = 4.71814
 texture = ExtResource( 9 )
 offset = Vector2( 0.879948, -9.96121 )
 script/script = ExtResource( 7 )
 sway_time = 8.0
 sway_range = 8.0
+sway_offset = -110
 
 [node name="3" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -14, 1 )
-transform/rot = 3.69799
+transform/rot = 4.45727
 texture = ExtResource( 10 )
 offset = Vector2( -0.136379, -7.27883 )
 script/script = ExtResource( 7 )
 sway_time = 8.0
 sway_range = 8.0
+sway_offset = 0
 
 [node name="4" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( 44, 17 )
-transform/rot = 3.69799
+transform/rot = -2.88525
 texture = ExtResource( 11 )
 offset = Vector2( 2.83013, -10.3918 )
 script/script = ExtResource( 7 )
 sway_time = 8.0
 sway_range = 8.0
+sway_offset = 55
 
 [node name="5" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( 22, 8 )
-transform/rot = 3.69799
+transform/rot = -1.4085
 texture = ExtResource( 12 )
 offset = Vector2( 1.41242, -10.6773 )
 script/script = ExtResource( 7 )
 sway_time = 8.0
 sway_range = 8.0
+sway_offset = 44
 
 [node name="6" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -71, 15 )
-transform/rot = 3.69799
-transform/scale = Vector2( 1, 1 )
+transform/rot = 7.11913
 texture = ExtResource( 6 )
 offset = Vector2( 1, -9 )
 script/script = ExtResource( 7 )
 sway_time = 8.0
 sway_range = 8.0
+sway_offset = -29
 
 [node name="sword" type="Sprite" parent="credits"]
 
@@ -518,9 +545,20 @@ window/title = "New / Continue"
 dialog/text = "Would you like to start new a game?"
 dialog/hide_on_ok = true
 
+[node name="Position2D" type="Position2D" parent="."]
+
+transform/pos = Vector2( 160, 100 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="pressed" from="VBoxContainer/new" to="." method="_on_new_pressed"]
+
 [connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
 
 [connection signal="pressed" from="VBoxContainer/to_credits" to="." method="_on_credits_pressed"]
+
+[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
 
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
 
