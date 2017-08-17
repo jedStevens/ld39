@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=1]
+[gd_scene load_steps=28 format=1]
 
 [ext_resource path="res://main_menu/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://main_menu/moon.png" type="Texture" id=2]
@@ -19,22 +19,76 @@
 [ext_resource path="res://ui/hover.wav" type="Sample" id=17]
 [ext_resource path="res://camera.tscn" type="PackedScene" id=18]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
+[sub_resource type="Animation" id=1]
 
-custom_solver_bias = 0.0
-points = Vector2Array( 178, 173, 178, 174, 172, 186, 151, 183, 148, 172, 174, 171 )
+resource/name = "hide"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("moon:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("moon:transform/pos")
+tracks/1/interp = 2
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 32, 64 ), Vector2( 32, 48 ) ]
+}
 
-[sub_resource type="ConvexPolygonShape2D" id=2]
+[sub_resource type="Animation" id=2]
 
-custom_solver_bias = 0.0
-points = Vector2Array( 174, 171, 148, 172, 146, 137, 177, 133 )
+resource/name = "show"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("moon:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("moon:transform/pos")
+tracks/1/interp = 2
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 32, 48 ), Vector2( 32, 64 ) ]
+}
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 
 custom_solver_bias = 0.0
+points = Vector2Array( 178, 173, 178, 174, 172, 186, 151, 183, 148, 172, 174, 171 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 174, 171, 148, 172, 146, 137, 177, 133 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+
+custom_solver_bias = 0.0
 points = Vector2Array( 165, 110, 177, 129, 177, 133, 146, 137, 145, 133, 145, 131, 146, 129, 157, 109, 164, 109 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=6]
 
 length = 6.0
 loop = true
@@ -60,7 +114,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.322392 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.322392 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.322392 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 
 length = 5.0
 loop = false
@@ -97,8 +151,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 41, -60 ), Vector2( 41, -64 ), Vector2( 41, -60 ), Vector2( 41, -64 ) ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath("moon_anim")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [ "show" ],
+"method": "play"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:visibility/opacity")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0, 1.9 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
 
 length = 1.0
 loop = false
@@ -145,8 +221,20 @@ tracks/3/keys = {
 "update": 0,
 "values": [ 1.0, 0.0 ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath("moon_anim")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [ "hide" ],
+"method": "play"
+} ]
+}
 
-[sub_resource type="SampleLibrary" id=7]
+[sub_resource type="SampleLibrary" id=9]
 
 samples/hover = {
 "db": 0.0,
@@ -164,7 +252,8 @@ __meta__ = {
 
 [node name="moon" type="Sprite" parent="."]
 
-transform/pos = Vector2( 30.5, 60.1354 )
+visibility/opacity = 0.0
+transform/pos = Vector2( 32, 48 )
 transform/scale = Vector2( 0.364583, 0.364583 )
 texture = ExtResource( 2 )
 
@@ -173,6 +262,8 @@ texture = ExtResource( 2 )
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
+anims/hide = SubResource( 1 )
+anims/show = SubResource( 2 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -180,9 +271,9 @@ autoplay = ""
 
 [node name="star" type="Sprite" parent="."]
 
-transform/pos = Vector2( 202, 45 )
+transform/pos = Vector2( 41, -60 )
 texture = ExtResource( 3 )
-modulate = Color( 1, 1, 1, 0.387961 )
+modulate = Color( 1, 1, 1, 0.160667 )
 
 [node name="title_text" type="TextureFrame" parent="."]
 
@@ -197,44 +288,9 @@ margin/bottom = 89.0
 texture = ExtResource( 4 )
 stretch_mode = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 40.0
-alignment = 0
-
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-theme/theme = ExtResource( 5 )
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 3.0
-margin/bottom = 40.0
-
-[node name="VSeparator1" type="VSeparator" parent="HBoxContainer"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-theme/theme = ExtResource( 5 )
-margin/left = 7.0
-margin/top = 0.0
-margin/right = 10.0
-margin/bottom = 40.0
-
 [node name="VBoxContainer" type="GridContainer" parent="."]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -244,6 +300,10 @@ margin/top = 102.0
 margin/right = 212.0
 margin/bottom = 134.0
 columns = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="new" type="Button" parent="VBoxContainer"]
 
@@ -345,19 +405,29 @@ enabled_focus_mode = 2
 shortcut = null
 text = "Back"
 flat = false
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="credits" type="Node2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 0, 200 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="flowers" type="Node2D" parent="credits"]
 
+editor/display_folded = true
 transform/pos = Vector2( 159, 170 )
 
 [node name="0" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -49, 11 )
-transform/rot = 7.11913
+transform/rot = -2.77323
 texture = ExtResource( 6 )
 offset = Vector2( 0.994214, -8.00816 )
 script/script = ExtResource( 7 )
@@ -368,7 +438,7 @@ sway_offset = -29
 [node name="1" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -33, 21 )
-transform/rot = -7.99004
+transform/rot = 6.15366
 texture = ExtResource( 8 )
 offset = Vector2( 0.75958, -10.4126 )
 script/script = ExtResource( 7 )
@@ -379,7 +449,7 @@ sway_offset = 121
 [node name="2" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -30, -4 )
-transform/rot = 4.71814
+transform/rot = -7.84539
 texture = ExtResource( 9 )
 offset = Vector2( 0.879948, -9.96121 )
 script/script = ExtResource( 7 )
@@ -390,7 +460,7 @@ sway_offset = -110
 [node name="3" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -14, 1 )
-transform/rot = 4.45727
+transform/rot = 1.21246
 texture = ExtResource( 10 )
 offset = Vector2( -0.136379, -7.27883 )
 script/script = ExtResource( 7 )
@@ -401,7 +471,7 @@ sway_offset = 0
 [node name="4" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( 44, 17 )
-transform/rot = -2.88525
+transform/rot = 7.17296
 texture = ExtResource( 11 )
 offset = Vector2( 2.83013, -10.3918 )
 script/script = ExtResource( 7 )
@@ -412,7 +482,7 @@ sway_offset = 55
 [node name="5" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( 22, 8 )
-transform/rot = -1.4085
+transform/rot = 6.36524
 texture = ExtResource( 12 )
 offset = Vector2( 1.41242, -10.6773 )
 script/script = ExtResource( 7 )
@@ -423,7 +493,7 @@ sway_offset = 44
 [node name="6" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -71, 15 )
-transform/rot = 7.11913
+transform/rot = -2.77323
 texture = ExtResource( 6 )
 offset = Vector2( 1, -9 )
 script/script = ExtResource( 7 )
@@ -433,7 +503,7 @@ sway_offset = -29
 
 [node name="sword" type="Sprite" parent="credits"]
 
-transform/pos = Vector2( 160, 150 )
+transform/pos = Vector2( 165, 149 )
 texture = ExtResource( 13 )
 
 [node name="hover_label" type="Label" parent="credits"]
@@ -459,13 +529,13 @@ transition_speed = 2.0
 
 editor/display_folded = true
 input/pickable = true
-shapes/0/shape = SubResource( 1 )
+shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 2 )
+shapes/1/shape = SubResource( 4 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
-shapes/2/shape = SubResource( 3 )
+shapes/2/shape = SubResource( 5 )
 shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/2/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -485,9 +555,9 @@ trigger = false
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/default = SubResource( 4 )
-anims/lead_in = SubResource( 5 )
-anims/lead_out = SubResource( 6 )
+anims/default = SubResource( 6 )
+anims/lead_in = SubResource( 7 )
+anims/lead_out = SubResource( 8 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -507,7 +577,7 @@ stream/buffering_ms = 500
 [node name="sfx" type="SamplePlayer" parent="."]
 
 config/polyphony = 1
-config/samples = SubResource( 7 )
+config/samples = SubResource( 9 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0
