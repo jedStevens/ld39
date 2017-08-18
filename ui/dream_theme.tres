@@ -1,14 +1,13 @@
-[gd_resource type="Theme" load_steps=19 format=1]
+[gd_resource type="Theme" load_steps=25 format=1]
 
 [ext_resource path="res://ui/ui_font.tres" type="DynamicFont" id=1]
-[ext_resource path="res://ui/theme_style/button/hover.png" type="Texture" id=2]
-[ext_resource path="res://ui/theme_style/button/normal.png" type="Texture" id=3]
-[ext_resource path="res://ui/theme_style/button/pressed.png" type="Texture" id=4]
+[ext_resource path="res://ui/dream_theme/button/hover.png" type="Texture" id=2]
+[ext_resource path="res://ui/dream_theme/button/normal.png" type="Texture" id=3]
+[ext_resource path="res://ui/dream_theme/button/pressed.png" type="Texture" id=4]
 [ext_resource path="res://ui/perfect_dos_vga_437/Perfect DOS VGA 437.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://ui/theme_style/panel/panel.tres" type="StyleBox" id=6]
-[ext_resource path="res://ui/theme_style/scroll_bar/grabber.png" type="Texture" id=7]
-[ext_resource path="res://ui/theme_style/button/disabled.png" type="Texture" id=8]
-[ext_resource path="res://ui/theme_style/vhsep.png" type="Texture" id=9]
+[ext_resource path="res://ui/dream_theme/button/disabled.png" type="Texture" id=6]
+[ext_resource path="res://ui/dream_theme/scroll_bar/grabber.png" type="Texture" id=7]
+[ext_resource path="res://ui/PixAntiqua.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -61,20 +60,20 @@ expand_margin/top = 0.0
 expand_margin/bottom = 0.0
 draw_center = true
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=4]
 
 font/size = 16
 font/use_mipmaps = false
 font/use_filter = false
 font/font = ExtResource( 5 )
 
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="StyleBoxTexture" id=5]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 margin/left = 3.0
 margin/right = 3.0
 margin/top = 3.0
@@ -83,15 +82,15 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
-draw_center = false
+draw_center = true
 
-[sub_resource type="StyleBoxTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=6]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
-texture = ExtResource( 7 )
+texture = ExtResource( 3 )
 margin/left = 3.0
 margin/right = 3.0
 margin/top = 3.0
@@ -108,11 +107,45 @@ content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
-texture = ExtResource( 8 )
+texture = ExtResource( 6 )
 margin/left = 3.0
 margin/right = 3.0
 margin/top = 3.0
 margin/bottom = 3.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=8]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 3 )
+margin/left = 3.0
+margin/right = 3.0
+margin/top = 3.0
+margin/bottom = 3.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=9]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 6 )
+margin/left = 3.0
+margin/right = 3.0
+margin/top = 3.0
+margin/bottom = 0.0
 expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
@@ -125,7 +158,91 @@ content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
-texture = ExtResource( 9 )
+texture = ExtResource( 6 )
+margin/left = 3.0
+margin/right = 3.0
+margin/top = 3.0
+margin/bottom = 3.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=11]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 3 )
+margin/left = 3.0
+margin/right = 3.0
+margin/top = 3.0
+margin/bottom = 3.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=12]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 7 )
+margin/left = 3.0
+margin/right = 3.0
+margin/top = 3.0
+margin/bottom = 3.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 3.0
+expand_margin/bottom = 3.0
+draw_center = false
+
+[sub_resource type="StyleBoxTexture" id=13]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 7 )
+margin/left = 3.0
+margin/right = 3.0
+margin/top = 3.0
+margin/bottom = 3.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 3.0
+expand_margin/bottom = 3.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=14]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 6 )
+margin/left = 3.0
+margin/right = 3.0
+margin/top = 3.0
+margin/bottom = 3.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=15]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
 margin/left = 0.0
 margin/right = 0.0
 margin/top = 0.0
@@ -136,15 +253,16 @@ expand_margin/top = 0.0
 expand_margin/bottom = 0.0
 draw_center = true
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=16]
 
-font/size = 8
+font/size = 12
 font/use_mipmaps = false
 font/use_filter = false
+font/font = ExtResource( 8 )
 
 [resource]
 
-default_font = SubResource( 5 )
+default_font = SubResource( 16 )
 Button/colors/font_color = Color( 1, 1, 1, 1 )
 Button/colors/font_color_disabled = Color( 1, 1, 1, 0.2 )
 Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -162,18 +280,63 @@ Label/constants/line_spacing = 3
 Label/constants/shadow_as_outline = 0
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
-Label/fonts/font = SubResource( 9 )
-Panel/styles/panel = ExtResource( 6 )
-Panel/styles/panelf = ExtResource( 6 )
-Panel/styles/panelnc = ExtResource( 6 )
+Label/fonts/font = SubResource( 4 )
+Panel/styles/panel = SubResource( 5 )
+Panel/styles/panelf = SubResource( 6 )
+Panel/styles/panelnc = null
+ToolButton/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+ToolButton/colors/font_color_disabled = Color( 0.9, 0.95, 1, 0.3 )
+ToolButton/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+ToolButton/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+ToolButton/constants/hseparation = 3
+ToolButton/fonts/font = null
+ToolButton/styles/disabled = null
+ToolButton/styles/focus = SubResource( 7 )
+ToolButton/styles/hover = SubResource( 8 )
+ToolButton/styles/normal = SubResource( 9 )
+ToolButton/styles/pressed = null
+Tree/colors/cursor_color = Color( 0, 0, 0, 1 )
+Tree/colors/drop_position_color = Color( 1, 0.3, 0.2, 1 )
+Tree/colors/font_color = Color( 0.690196, 0.690196, 0.690196, 1 )
+Tree/colors/font_color_selected = Color( 1, 1, 1, 1 )
+Tree/colors/guide_color = Color( 1, 1, 1, 1 )
+Tree/colors/relationship_line_color = Color( 0.27451, 0.27451, 0.27451, 1 )
+Tree/colors/selection_color = Color( 0.1, 0.1, 1, 0.8 )
+Tree/colors/title_button_color = Color( 0.527344, 0.193634, 0.193634, 1 )
+Tree/constants/button_margin = 3
+Tree/constants/draw_relationship_lines = 1
+Tree/constants/guide_width = 2
+Tree/constants/hseparation = 2
+Tree/constants/item_margin = 10
+Tree/constants/scroll_border = 4
+Tree/constants/scroll_speed = 8
+Tree/constants/vseparation = 4
+Tree/fonts/font = null
+Tree/fonts/title_button_font = null
+Tree/icons/arrow = null
+Tree/icons/arrow_collapsed = null
+Tree/icons/checked = null
+Tree/icons/select_arrow = null
+Tree/icons/unchecked = null
+Tree/icons/updown = null
+Tree/styles/bg = SubResource( 10 )
+Tree/styles/bg_focus = null
+Tree/styles/button_pressed = null
+Tree/styles/cursor = null
+Tree/styles/cursor_unfocused = null
+Tree/styles/selected = null
+Tree/styles/selected_focus = null
+Tree/styles/title_button_hover = null
+Tree/styles/title_button_normal = SubResource( 11 )
+Tree/styles/title_button_pressed = null
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_hilite = null
 VScrollBar/icons/increment = null
 VScrollBar/icons/increment_hilite = null
-VScrollBar/styles/grabber = SubResource( 6 )
-VScrollBar/styles/grabber_hilite = SubResource( 8 )
-VScrollBar/styles/scroll = SubResource( 7 )
+VScrollBar/styles/grabber = SubResource( 12 )
+VScrollBar/styles/grabber_hilite = SubResource( 13 )
+VScrollBar/styles/scroll = SubResource( 14 )
 VScrollBar/styles/scroll_focus = null
 VSeparator/constants/separation = 4
-VSeparator/styles/separator = SubResource( 10 )
+VSeparator/styles/separator = SubResource( 15 )
 

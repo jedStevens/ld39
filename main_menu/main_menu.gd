@@ -20,6 +20,7 @@ func _on_back_pressed():
 
 func _on_play_pressed():
 	on_action()
+	get_node("anim").play("lead_out")
 
 func on_action():
 	get_node("sfx").play("hover")
