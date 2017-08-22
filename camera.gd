@@ -5,7 +5,9 @@ var lerp_speed = 1.0
 
 var scenes = {"game" : "res://game.tscn",
 "menu" : "res://main_menu/main_menu.tscn",
-"win" : "res://win_screen/win_screen.tscn"}
+"win" : "res://win_screen/win_screen.tscn",
+"save":"res://save_n_load/save_n_load.tscn",
+}
 const NORMAL_MSG = 0
 
 func set_scene(cmd):

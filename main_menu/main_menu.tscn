@@ -1,23 +1,25 @@
-[gd_scene load_steps=28 format=1]
+[gd_scene load_steps=30 format=1]
 
 [ext_resource path="res://main_menu/main_menu.gd" type="Script" id=1]
-[ext_resource path="res://main_menu/moon.png" type="Texture" id=2]
-[ext_resource path="res://main_menu/star.png" type="Texture" id=3]
-[ext_resource path="res://main_menu/title.png" type="Texture" id=4]
-[ext_resource path="res://ui/dream_theme.tres" type="Theme" id=5]
-[ext_resource path="res://main_menu/credits_section/flowers_0.png" type="Texture" id=6]
-[ext_resource path="res://foliage/flowers/flower_sway.gd" type="Script" id=7]
-[ext_resource path="res://main_menu/credits_section/flowers_1.png" type="Texture" id=8]
-[ext_resource path="res://main_menu/credits_section/flowers_2.png" type="Texture" id=9]
-[ext_resource path="res://main_menu/credits_section/flowers_3.png" type="Texture" id=10]
-[ext_resource path="res://main_menu/credits_section/flowers_4.png" type="Texture" id=11]
-[ext_resource path="res://main_menu/credits_section/flowers_5.png" type="Texture" id=12]
-[ext_resource path="res://main_menu/credits_section/sword.png" type="Texture" id=13]
-[ext_resource path="res://ui/ui_font.tres" type="DynamicFont" id=14]
-[ext_resource path="res://ui/hover_label.gd" type="Script" id=15]
-[ext_resource path="res://main_menu/theme.ogg" type="AudioStream" id=16]
-[ext_resource path="res://ui/hover.wav" type="Sample" id=17]
-[ext_resource path="res://camera.tscn" type="PackedScene" id=18]
+[ext_resource path="res://intro_cin/intro_cinematic.tscn" type="PackedScene" id=2]
+[ext_resource path="res://save_n_load/save_n_load.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main_menu/moon.png" type="Texture" id=4]
+[ext_resource path="res://main_menu/star.png" type="Texture" id=5]
+[ext_resource path="res://ui/dream_theme.tres" type="Theme" id=6]
+[ext_resource path="res://main_menu/title.png" type="Texture" id=7]
+[ext_resource path="res://main_menu/credits_section/flowers_0.png" type="Texture" id=8]
+[ext_resource path="res://foliage/flowers/flower_sway.gd" type="Script" id=9]
+[ext_resource path="res://main_menu/credits_section/flowers_1.png" type="Texture" id=10]
+[ext_resource path="res://main_menu/credits_section/flowers_2.png" type="Texture" id=11]
+[ext_resource path="res://main_menu/credits_section/flowers_3.png" type="Texture" id=12]
+[ext_resource path="res://main_menu/credits_section/flowers_4.png" type="Texture" id=13]
+[ext_resource path="res://main_menu/credits_section/flowers_5.png" type="Texture" id=14]
+[ext_resource path="res://main_menu/credits_section/sword.png" type="Texture" id=15]
+[ext_resource path="res://ui/ui_font.tres" type="DynamicFont" id=16]
+[ext_resource path="res://ui/hover_label.gd" type="Script" id=17]
+[ext_resource path="res://main_menu/theme.ogg" type="AudioStream" id=18]
+[ext_resource path="res://ui/hover.wav" type="Sample" id=19]
+[ext_resource path="res://camera.tscn" type="PackedScene" id=20]
 
 [sub_resource type="Animation" id=1]
 
@@ -240,22 +242,26 @@ samples/hover = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 17 )
+"sample": ExtResource( 19 )
 }
 
 [node name="root" type="Node2D"]
 
+visibility/opacity = 0.0
 script/script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
+cinematic = ExtResource( 2 )
+save_n_load = ExtResource( 3 )
+continue_button = NodePath("VBoxContainer/play")
 
 [node name="moon" type="Sprite" parent="."]
 
 visibility/opacity = 0.0
 transform/pos = Vector2( 32, 48 )
 transform/scale = Vector2( 0.364583, 0.364583 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 
 [node name="moon_anim" type="AnimationPlayer" parent="."]
 
@@ -271,9 +277,9 @@ autoplay = ""
 
 [node name="star" type="Sprite" parent="."]
 
-transform/pos = Vector2( 41, -60 )
-texture = ExtResource( 3 )
-modulate = Color( 1, 1, 1, 0.160667 )
+transform/pos = Vector2( 41, -64 )
+texture = ExtResource( 5 )
+modulate = Color( 1, 1, 1, 0.387961 )
 
 [node name="title_text" type="TextureFrame" parent="."]
 
@@ -281,11 +287,12 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+theme/theme = ExtResource( 6 )
 margin/left = 58.0
 margin/top = 41.0
 margin/right = 265.0
 margin/bottom = 89.0
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 stretch_mode = 0
 
 [node name="VBoxContainer" type="GridContainer" parent="."]
@@ -294,6 +301,7 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
+theme/theme = ExtResource( 6 )
 margin/left = 108.0
 margin/top = 102.0
 margin/right = 212.0
@@ -311,11 +319,11 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = ExtResource( 5 )
+theme/theme = ExtResource( 6 )
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 50.0
-margin/bottom = 15.0
+margin/right = 64.0
+margin/bottom = 19.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -332,11 +340,11 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = ExtResource( 5 )
-margin/left = 54.0
+theme/theme = ExtResource( 6 )
+margin/left = 68.0
 margin/top = 0.0
-margin/right = 104.0
-margin/bottom = 15.0
+margin/right = 125.0
+margin/bottom = 19.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -353,11 +361,11 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = ExtResource( 5 )
+theme/theme = ExtResource( 6 )
 margin/left = 0.0
-margin/top = 19.0
-margin/right = 50.0
-margin/bottom = 34.0
+margin/top = 23.0
+margin/right = 64.0
+margin/bottom = 42.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -374,11 +382,11 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = ExtResource( 5 )
-margin/left = 54.0
-margin/top = 19.0
-margin/right = 104.0
-margin/bottom = 34.0
+theme/theme = ExtResource( 6 )
+margin/left = 68.0
+margin/top = 23.0
+margin/right = 125.0
+margin/bottom = 42.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -394,19 +402,18 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = ExtResource( 5 )
+theme/theme = ExtResource( 6 )
 margin/left = 67.0
-margin/top = 311.0
+margin/top = 333.0
 margin/right = 115.0
-margin/bottom = 325.0
+margin/bottom = 352.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 text = "Back"
 flat = false
 __meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
+"_edit_group_": true
 }
 
 [node name="credits" type="Node2D" parent="."]
@@ -426,10 +433,10 @@ transform/pos = Vector2( 159, 170 )
 [node name="0" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -49, 11 )
-transform/rot = 4.51663
-texture = ExtResource( 6 )
+transform/rot = -7.6572
+texture = ExtResource( 8 )
 offset = Vector2( 0.994214, -8.00816 )
-script/script = ExtResource( 7 )
+script/script = ExtResource( 9 )
 sway_time = 8.0
 sway_range = 8.0
 sway_offset = -29
@@ -437,10 +444,10 @@ sway_offset = -29
 [node name="1" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -33, 21 )
-transform/rot = -0.609994
-texture = ExtResource( 8 )
+transform/rot = 5.47295
+texture = ExtResource( 10 )
 offset = Vector2( 0.75958, -10.4126 )
-script/script = ExtResource( 7 )
+script/script = ExtResource( 9 )
 sway_time = 8.0
 sway_range = 8.0
 sway_offset = 121
@@ -448,10 +455,10 @@ sway_offset = 121
 [node name="2" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -30, -4 )
-transform/rot = -5.81519
-texture = ExtResource( 9 )
+transform/rot = 1.09038
+texture = ExtResource( 11 )
 offset = Vector2( 0.879948, -9.96121 )
-script/script = ExtResource( 7 )
+script/script = ExtResource( 9 )
 sway_time = 8.0
 sway_range = 8.0
 sway_offset = -110
@@ -459,10 +466,10 @@ sway_offset = -110
 [node name="3" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -14, 1 )
-transform/rot = 7.15155
-texture = ExtResource( 10 )
+transform/rot = -7.82032
+texture = ExtResource( 12 )
 offset = Vector2( -0.136379, -7.27883 )
-script/script = ExtResource( 7 )
+script/script = ExtResource( 9 )
 sway_time = 8.0
 sway_range = 8.0
 sway_offset = 0
@@ -470,10 +477,10 @@ sway_offset = 0
 [node name="4" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( 44, 17 )
-transform/rot = 7.03898
-texture = ExtResource( 11 )
+transform/rot = -3.10445
+texture = ExtResource( 13 )
 offset = Vector2( 2.83013, -10.3918 )
-script/script = ExtResource( 7 )
+script/script = ExtResource( 9 )
 sway_time = 8.0
 sway_range = 8.0
 sway_offset = 55
@@ -481,10 +488,10 @@ sway_offset = 55
 [node name="5" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( 22, 8 )
-transform/rot = 7.63505
-texture = ExtResource( 12 )
+transform/rot = -4.45427
+texture = ExtResource( 14 )
 offset = Vector2( 1.41242, -10.6773 )
-script/script = ExtResource( 7 )
+script/script = ExtResource( 9 )
 sway_time = 8.0
 sway_range = 8.0
 sway_offset = 44
@@ -492,10 +499,10 @@ sway_offset = 44
 [node name="6" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -71, 15 )
-transform/rot = 4.51663
-texture = ExtResource( 6 )
+transform/rot = -7.6572
+texture = ExtResource( 8 )
 offset = Vector2( 1, -9 )
-script/script = ExtResource( 7 )
+script/script = ExtResource( 9 )
 sway_time = 8.0
 sway_range = 8.0
 sway_offset = -29
@@ -503,7 +510,7 @@ sway_offset = -29
 [node name="sword" type="Sprite" parent="credits"]
 
 transform/pos = Vector2( 165, 149 )
-texture = ExtResource( 13 )
+texture = ExtResource( 15 )
 
 [node name="hover_label" type="Label" parent="credits"]
 
@@ -515,13 +522,13 @@ margin/left = 67.0
 margin/top = 90.0
 margin/right = 172.0
 margin/bottom = 109.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 16 )
 text = "A Game by W. J. Stevens
 2017"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script/script = ExtResource( 15 )
+script/script = ExtResource( 17 )
 transition_speed = 2.0
 
 [node name="Area2D" type="Area2D" parent="credits"]
@@ -564,7 +571,7 @@ autoplay = "lead_in"
 
 [node name="StreamPlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 16 )
+stream/stream = ExtResource( 18 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0
@@ -596,30 +603,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="camera" parent="." instance=ExtResource( 18 )]
-
-[node name="save_n_load" type="ConfirmationDialog" parent="."]
-
-visibility/visible = false
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 71.0
-margin/top = 81.0
-margin/right = 245.0
-margin/bottom = 128.0
-popup/exclusive = false
-window/title = "New / Continue"
-dialog/text = "Would you like to start new a game?"
-dialog/hide_on_ok = true
-
 [node name="Position2D" type="Position2D" parent="."]
 
 transform/pos = Vector2( 160, 100 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="camera" parent="." instance=ExtResource( 20 )]
 
 [connection signal="pressed" from="VBoxContainer/new" to="." method="_on_new_pressed"]
 

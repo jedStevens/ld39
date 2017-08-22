@@ -1,5 +1,12 @@
 extends Node2D
 
+# Root Manager
+var _next_scn = null
+export(PackedScene) var cinematic
+export(PackedScene) var save_n_load
+
+export(NodePath) var continue_button
+
 func _on_credits_pressed():
 	on_action()
 	get_node("camera").set_lerp_target(get_node("credits").get_pos())
@@ -7,6 +14,9 @@ func _on_credits_pressed():
 
 func _ready():
 	set_process(true)
+	
+	if save_manager.get_saves("saves") == []:
+		get_node(continue_button).set_disabled(true)
 
 func _process(delta):
 	pass
@@ -21,12 +31,15 @@ func _on_back_pressed():
 func _on_play_pressed():
 	on_action()
 	get_node("anim").play("lead_out")
+	_next_scn = save_n_load
+	
 
 func on_action():
 	get_node("sfx").play("hover")
+	
 
 func on_lead_out_completed():
-	get_tree().change_scene("res://intro_cin/intro_cinematic.tscn")
+	get_tree().change_scene_to(_next_scn)
 
 func _on_quit_pressed():
 	get_tree().quit()
@@ -34,3 +47,4 @@ func _on_quit_pressed():
 func _on_new_pressed():
 	on_action()
 	get_node("anim").play("lead_out")
+	_next_scn = cinematic

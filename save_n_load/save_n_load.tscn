@@ -1,38 +1,13 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://ui/dream_theme.tres" type="Theme" id=1]
-[ext_resource path="res://ui/font_8px/04B_03__.TTF" type="DynamicFontData" id=2]
-[ext_resource path="res://ui/theme_style/extras/moon.png" type="Texture" id=3]
-[ext_resource path="res://ui/theme_style/extras/sun.png" type="Texture" id=4]
-[ext_resource path="res://ui/theme_style/button/pressed.png" type="Texture" id=5]
-[ext_resource path="res://save_n_load/save_slot.tscn" type="PackedScene" id=6]
-[ext_resource path="res://camera.tscn" type="PackedScene" id=7]
+[ext_resource path="res://save_n_load/save_n_load.gd" type="Script" id=2]
+[ext_resource path="res://save_n_load/save_slot.tscn" type="PackedScene" id=3]
+[ext_resource path="res://save_n_load/load_title.png" type="Texture" id=4]
+[ext_resource path="res://save_n_load/grey_scroll_bg.tres" type="StyleBox" id=5]
+[ext_resource path="res://camera.tscn" type="PackedScene" id=6]
 
-[sub_resource type="DynamicFont" id=1]
-
-font/size = 16
-font/use_mipmaps = false
-font/use_filter = false
-font/font = ExtResource( 2 )
-
-[sub_resource type="StyleBoxTexture" id=2]
-
-content_margin/left = -1.0
-content_margin/right = -1.0
-content_margin/top = -1.0
-content_margin/bottom = -1.0
-texture = ExtResource( 5 )
-margin/left = 3.0
-margin/right = 3.0
-margin/top = 3.0
-margin/bottom = 3.0
-expand_margin/left = 0.0
-expand_margin/right = 0.0
-expand_margin/top = 0.0
-expand_margin/bottom = 0.0
-draw_center = true
-
-[node name="save_n_load" type="VBoxContainer"]
+[node name="save_n_load" type="Control"]
 
 rect/min_size = Vector2( 320, 200 )
 focus/ignore_mouse = false
@@ -42,67 +17,68 @@ size_flags/vertical = 2
 theme/theme = ExtResource( 1 )
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 40.0
-alignment = 0
+margin/right = 320.0
+margin/bottom = 200.0
 
-[node name="base_0" type="Panel" parent="."]
+[node name="panel" type="VBoxContainer" parent="."]
 
-rect/min_size = Vector2( 320, 32 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 320.0
+margin/bottom = 200.0
+custom_constants/separation = 0
+alignment = 0
+script/script = ExtResource( 2 )
+slot_scn = ExtResource( 3 )
+slots = NodePath("base_1/HBoxContainer/VBoxContainer/slots")
+
+[node name="base_0" type="Panel" parent="panel"]
+
+rect/min_size = Vector2( 320, 32 )
+focus/ignore_mouse = true
+focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = ExtResource( 1 )
 margin/left = 0.0
 margin/top = 0.0
 margin/right = 320.0
 margin/bottom = 32.0
 
-[node name="Label" type="Label" parent="base_0"]
+[node name="Label" type="TextureFrame" parent="panel/base_0"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 106.0
-margin/top = 9.0
-margin/right = 230.0
-margin/bottom = 25.0
-custom_fonts/font = SubResource( 1 )
-text = "Save and Load"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="TextureFrame" type="TextureFrame" parent="base_0"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 9.0
-margin/top = 10.0
-margin/right = 21.0
-margin/bottom = 22.0
-texture = ExtResource( 3 )
-stretch_mode = 0
-
-[node name="TextureFrame1" type="TextureFrame" parent="base_0"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 298.0
-margin/top = 9.0
-margin/right = 314.0
-margin/bottom = 25.0
+margin/left = 94.0
+margin/top = 8.0
+margin/right = 226.0
+margin/bottom = 26.0
 texture = ExtResource( 4 )
 stretch_mode = 0
 
-[node name="base_1" type="Panel" parent="."]
+[node name="back" type="ToolButton" parent="panel/base_0"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 1 )
+margin/left = 8.0
+margin/top = 7.0
+margin/right = 56.0
+margin/bottom = 25.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Back"
+flat = false
+
+[node name="base_1" type="Panel" parent="panel"]
 
 rect/min_size = Vector2( 320, 164 )
 focus/ignore_mouse = false
@@ -111,12 +87,13 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 theme/theme = ExtResource( 1 )
 margin/left = 0.0
-margin/top = 36.0
+margin/top = 32.0
 margin/right = 320.0
-margin/bottom = 200.0
-custom_styles/panel = SubResource( 2 )
+margin/bottom = 196.0
+custom_styles/panelf = ExtResource( 5 )
+custom_styles/panel = ExtResource( 5 )
 
-[node name="HBoxContainer" type="ScrollContainer" parent="base_1"]
+[node name="HBoxContainer" type="ScrollContainer" parent="panel/base_1"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = false
@@ -132,7 +109,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="base_1/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="panel/base_1/HBoxContainer"]
 
 rect/min_size = Vector2( 304, 0 )
 focus/ignore_mouse = false
@@ -141,53 +118,27 @@ size_flags/horizontal = 3
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 305.0
-margin/bottom = 224.0
-custom_constants/separation = 1
+margin/right = 314.0
+margin/bottom = 0.0
 alignment = 0
 
-[node name="slot" parent="base_1/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
+[node name="slots" type="ButtonGroup" parent="panel/base_1/HBoxContainer/VBoxContainer"]
 
-[node name="slot1" parent="base_1/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 314.0
+margin/bottom = 0.0
+alignment = 0
 
-margin/top = 25.0
-margin/bottom = 49.0
+[node name="camera" parent="." instance=ExtResource( 6 )]
 
-[node name="slot2" parent="base_1/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
+z/z = 100
+z/relative = false
 
-margin/top = 50.0
-margin/bottom = 74.0
-
-[node name="slot3" parent="base_1/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
-
-margin/top = 75.0
-margin/bottom = 99.0
-
-[node name="slot4" parent="base_1/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
-
-margin/top = 100.0
-margin/bottom = 124.0
-
-[node name="slot5" parent="base_1/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
-
-margin/top = 125.0
-margin/bottom = 149.0
-
-[node name="slot6" parent="base_1/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
-
-margin/top = 150.0
-margin/bottom = 174.0
-
-[node name="slot7" parent="base_1/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
-
-margin/top = 175.0
-margin/bottom = 199.0
-
-[node name="slot8" parent="base_1/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
-
-margin/top = 200.0
-margin/bottom = 224.0
-
-[node name="camera" parent="." instance=ExtResource( 7 )]
+[connection signal="pressed" from="panel/base_0/back" to="panel" method="_on_back_pressed"]
 
 

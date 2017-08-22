@@ -1,10 +1,34 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://ui/dream_theme.tres" type="Theme" id=1]
+[ext_resource path="res://save_n_load/save_slot.gd" type="Script" id=2]
+[ext_resource path="res://ui/dream_theme/extras/skull.png" type="Texture" id=3]
+[ext_resource path="res://ui/dream_theme/extras/triangle.png" type="Texture" id=4]
+[ext_resource path="res://save_n_load/details_window.gd" type="Script" id=5]
+[ext_resource path="res://ui/dream_theme/extras/sun.png" type="Texture" id=6]
+[ext_resource path="res://ui/dream_theme/button/disabled.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxTexture" id=1]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 3, 3, 3 )
+margin/left = 1.0
+margin/right = 1.0
+margin/top = 0.0
+margin/bottom = 0.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
 
 [node name="slot" type="Panel"]
 
-rect/min_size = Vector2( 305, 24 )
+rect/min_size = Vector2( 305, 29 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -13,169 +37,482 @@ theme/theme = ExtResource( 1 )
 margin/left = 0.0
 margin/top = 0.0
 margin/right = 305.0
-margin/bottom = 24.0
+margin/bottom = 30.0
+script/script = ExtResource( 2 )
+character_name = "[Character Name]"
+name_box = NodePath("name")
 
-[node name="HSplitContainer" type="HBoxContainer" parent="."]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 3.0
-margin/top = 3.0
-margin/right = 302.0
-margin/bottom = 21.0
-custom_constants/separation = 0
-alignment = 0
-
-[node name="spacer_0" type="Control" parent="HSplitContainer"]
-
-rect/min_size = Vector2( 1, 0 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 1.0
-margin/bottom = 18.0
-
-[node name="number" type="Label" parent="HSplitContainer"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 1.0
-margin/top = 1.0
-margin/right = 19.0
-margin/bottom = 17.0
-text = "#1"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="sep_0" type="VSeparator" parent="HSplitContainer"]
+[node name="delete" type="ToolButton" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 19.0
-margin/top = 0.0
+theme/theme = ExtResource( 1 )
+margin/left = 2.0
+margin/top = 4.0
 margin/right = 22.0
-margin/bottom = 18.0
+margin/bottom = 26.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+icon = ExtResource( 3 )
+flat = true
 
-[node name="name" type="Label" parent="HSplitContainer"]
+[node name="name" type="Label" parent="."]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
-size_flags/vertical = 0
+size_flags/vertical = 1
+theme/theme = ExtResource( 1 )
 margin/left = 22.0
-margin/top = 1.0
-margin/right = 117.0
-margin/bottom = 17.0
-text = "Xuki"
-align = 1
+margin/top = 9.0
+margin/right = 237.0
+margin/bottom = 21.0
+text = "[Character Name]"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="sep_1" type="VSeparator" parent="HSplitContainer"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 117.0
-margin/top = 0.0
-margin/right = 120.0
-margin/bottom = 18.0
-
-[node name="lvl" type="Label" parent="HSplitContainer"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 0
-margin/left = 120.0
-margin/top = 1.0
-margin/right = 215.0
-margin/bottom = 17.0
-text = "43"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="sep_2" type="VSeparator" parent="HSplitContainer"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 215.0
-margin/top = 0.0
-margin/right = 218.0
-margin/bottom = 18.0
-
-[node name="preview" type="Button" parent="HSplitContainer"]
+[node name="preview" type="ToolButton" parent="."]
 
 rect/min_size = Vector2( 28, 16 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
-size_flags/horizontal = 0
-size_flags/vertical = 0
-margin/left = 218.0
-margin/top = 1.0
-margin/right = 267.0
-margin/bottom = 17.0
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 1 )
+margin/left = 216.0
+margin/top = 4.0
+margin/right = 278.0
+margin/bottom = 26.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 text = "More Info"
 flat = false
 
-[node name="sep_3" type="VSeparator" parent="HSplitContainer"]
+[node name="select" type="ToolButton" parent="."]
 
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 267.0
-margin/top = 0.0
-margin/right = 270.0
-margin/bottom = 18.0
+margin/left = -126.5
+margin/top = 11.0
+margin/right = -148.5
+margin/bottom = -11.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+icon = ExtResource( 4 )
+flat = false
+clip_text = true
 
-[node name="load" type="Button" parent="HSplitContainer"]
+[node name="details" type="Popup" parent="."]
 
-rect/min_size = Vector2( 28, 16 )
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 0
 size_flags/vertical = 0
-margin/left = 270.0
-margin/top = 1.0
-margin/right = 298.0
-margin/bottom = 17.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-text = "Go"
-flat = false
+margin/left = -52.0
+margin/top = -23.0
+margin/right = 136.0
+margin/bottom = 106.0
+popup/exclusive = true
+script/script = ExtResource( 5 )
+location_label = NodePath("loc_box")
+name_label = NodePath("name_box")
+level_label = NodePath("level_box")
+icon_box = NodePath("ScrollContainer/HBoxContainer")
 
-[node name="spacer1" type="Control" parent="HSplitContainer"]
+[node name="Panel" type="Panel" parent="details"]
 
-rect/min_size = Vector2( 1, 0 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 3
+size_flags/stretch_ratio = 0.0
+margin/left = 2.0
+margin/top = -7.0
+margin/right = 186.0
+margin/bottom = 39.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Panel 2" type="Panel" parent="details"]
+
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 298.0
+margin/left = 2.0
+margin/top = 38.0
+margin/right = 186.0
+margin/bottom = 97.0
+
+[node name="Panel3" type="Panel" parent="details"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 2.0
+margin/top = 96.0
+margin/right = 186.0
+margin/bottom = 129.0
+
+[node name="blessing_curse_lbl" type="Label" parent="details"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 43.0
+margin/top = 44.0
+margin/right = 145.0
+margin/bottom = 56.0
+text = "Curses/Blessings"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="details"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 5.0
+margin/top = 61.0
+margin/right = 183.0
+margin/bottom = 93.0
+scroll/horizontal = true
+scroll/vertical = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="details/ScrollContainer"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -1.0
 margin/top = 0.0
-margin/right = 299.0
-margin/bottom = 18.0
+margin/right = 235.0
+margin/bottom = 16.0
+alignment = 0
+
+[node name="TextureFrame" type="TextureFrame" parent="details/ScrollContainer/HBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 16.0
+margin/bottom = 16.0
+texture = ExtResource( 6 )
+stretch_mode = 0
+
+[node name="TextureFrame6 3" type="TextureFrame" parent="details/ScrollContainer/HBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 20.0
+margin/top = 0.0
+margin/right = 36.0
+margin/bottom = 16.0
+texture = ExtResource( 6 )
+stretch_mode = 0
+
+[node name="TextureFrame1" type="TextureFrame" parent="details/ScrollContainer/HBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 40.0
+margin/top = 0.0
+margin/right = 56.0
+margin/bottom = 16.0
+texture = ExtResource( 6 )
+stretch_mode = 0
+
+[node name="TextureFrame6" type="TextureFrame" parent="details/ScrollContainer/HBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 60.0
+margin/top = 0.0
+margin/right = 76.0
+margin/bottom = 16.0
+texture = ExtResource( 6 )
+stretch_mode = 0
+
+[node name="TextureFrame2" type="TextureFrame" parent="details/ScrollContainer/HBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 80.0
+margin/top = 0.0
+margin/right = 96.0
+margin/bottom = 16.0
+texture = ExtResource( 6 )
+stretch_mode = 0
+
+[node name="TextureFrame6 4" type="TextureFrame" parent="details/ScrollContainer/HBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 100.0
+margin/top = 0.0
+margin/right = 116.0
+margin/bottom = 16.0
+texture = ExtResource( 6 )
+stretch_mode = 0
+
+[node name="TextureFrame3" type="TextureFrame" parent="details/ScrollContainer/HBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 120.0
+margin/top = 0.0
+margin/right = 136.0
+margin/bottom = 16.0
+texture = ExtResource( 6 )
+stretch_mode = 0
+
+[node name="TextureFrame6 6" type="TextureFrame" parent="details/ScrollContainer/HBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 140.0
+margin/top = 0.0
+margin/right = 156.0
+margin/bottom = 16.0
+texture = ExtResource( 6 )
+stretch_mode = 0
+
+[node name="TextureFrame4" type="TextureFrame" parent="details/ScrollContainer/HBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 160.0
+margin/top = 0.0
+margin/right = 176.0
+margin/bottom = 16.0
+texture = ExtResource( 6 )
+stretch_mode = 0
+
+[node name="TextureFrame6 5" type="TextureFrame" parent="details/ScrollContainer/HBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 180.0
+margin/top = 0.0
+margin/right = 196.0
+margin/bottom = 16.0
+texture = ExtResource( 6 )
+stretch_mode = 0
+
+[node name="TextureFrame5" type="TextureFrame" parent="details/ScrollContainer/HBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 200.0
+margin/top = 0.0
+margin/right = 216.0
+margin/bottom = 16.0
+texture = ExtResource( 6 )
+stretch_mode = 0
+
+[node name="TextureFrame6 2" type="TextureFrame" parent="details/ScrollContainer/HBoxContainer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 220.0
+margin/top = 0.0
+margin/right = 236.0
+margin/bottom = 16.0
+texture = ExtResource( 6 )
+stretch_mode = 0
+
+[node name="VSeparator" type="VSeparator" parent="details"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 61.0
+margin/top = 0.0
+margin/right = 64.0
+margin/bottom = 34.0
+custom_styles/separator = SubResource( 1 )
+custom_constants/separation = 1
+
+[node name="name_box" type="Label" parent="details"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 69.0
+margin/top = -1.0
+margin/right = 109.0
+margin/bottom = 11.0
+text = "Name:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="name_lbl" type="Label" parent="details"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 8.0
+margin/top = -1.0
+margin/right = 57.0
+margin/bottom = 11.0
+text = "Name"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="level_box" type="Label" parent="details"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 69.0
+margin/top = 11.0
+margin/right = 109.0
+margin/bottom = 23.0
+text = "Level:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="level_lbl" type="Label" parent="details"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 8.0
+margin/top = 11.0
+margin/right = 57.0
+margin/bottom = 23.0
+text = "Level"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="loc_box" type="Label" parent="details"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 69.0
+margin/top = 23.0
+margin/right = 120.0
+margin/bottom = 35.0
+text = "Location:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="loc_lbl" type="Label" parent="details"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 8.0
+margin/top = 23.0
+margin/right = 56.0
+margin/bottom = 35.0
+text = "Location"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="close" type="Button" parent="details"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 72.0
+margin/top = 103.0
+margin/right = 110.0
+margin/bottom = 123.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Close"
+flat = false
+
+[node name="delete_confirm" type="ConfirmationDialog" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 2.0
+margin/top = 4.0
+margin/right = 154.0
+margin/bottom = 74.0
+popup/exclusive = false
+window/title = "Are you sure?"
+dialog/text = "Delete this character?
+(This cannot be undone)"
+dialog/hide_on_ok = true
+
+[connection signal="pressed" from="delete" to="." method="_on_delete_pressed"]
+
+[connection signal="pressed" from="preview" to="." method="_on_preview_pressed"]
+
+[connection signal="pressed" from="select" to="." method="_on_select_pressed"]
+
+[connection signal="pressed" from="details/close" to="details" method="_on_close_pressed"]
+
+[connection signal="confirmed" from="delete_confirm" to="." method="_on_delete_confirm_confirmed"]
 
 

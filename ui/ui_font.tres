@@ -1,10 +1,10 @@
 [gd_resource type="DynamicFont" load_steps=2 format=1]
 
-[ext_resource path="res://ui/font_8px/04B_03__.TTF" type="DynamicFontData" id=1]
+[ext_resource path="res://ui/PixAntiqua.ttf" type="DynamicFontData" id=1]
 
 [resource]
 
-font/size = 8
+font/size = 12
 font/use_mipmaps = false
 font/use_filter = false
 font/font = ExtResource( 1 )

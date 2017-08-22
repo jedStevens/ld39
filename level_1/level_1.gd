@@ -11,6 +11,12 @@ var max_level = player.HITS_PER_LEVEL.size()
 
 func _ready():
 	set_process(true)
+	set_process_input(true)
+
+func _input(event):
+	if event.type == InputEvent.KEY:
+		if event.scancode == KEY_ESCAPE and event.pressed:
+			get_tree().set_pause( !get_tree().is_paused() )
 
 func _process(delta):
 	demon_hit_timer -= delta
@@ -61,7 +67,6 @@ func hit_demon(cause=null):
 			blood.set_rot(cause.get_rot())
 			blood.set_pos(cause.get_pos())
 			get_node("blood").add_child(blood)
-			print("add blood")
 
 
 func _on_bar_death():

@@ -31,7 +31,7 @@
 [ext_resource path="res://skulls.png" type="Texture" id=29]
 [ext_resource path="res://camera.tscn" type="PackedScene" id=30]
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=1]
 
 length = 1.0
 loop = false
@@ -69,7 +69,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=2]
 
 resource/name = "win"
 length = 0.2
@@ -98,7 +98,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=3]
 
 length = 70.0
 loop = true
@@ -191,7 +191,7 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=4]
 
 length = 70.0
 loop = true
@@ -233,9 +233,8 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=5]
 
-resource/name = "blinking"
 length = 5.0
 loop = true
 step = 0.1
@@ -270,9 +269,8 @@ tracks/2/keys = {
 "values": [ 4 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=6]
 
-resource/name = "fade"
 length = 0.6
 loop = false
 step = 0.1
@@ -347,9 +345,8 @@ tracks/6/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=7]
 
-resource/name = "reveal"
 length = 1.5
 loop = false
 step = 0.1
@@ -476,7 +473,7 @@ tracks/11/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="SampleLibrary" id=4]
+[sub_resource type="SampleLibrary" id=8]
 
 samples/growl1 = {
 "db": 0.0,
@@ -503,27 +500,27 @@ samples/pain = {
 "sample": ExtResource( 9 )
 }
 
-[sub_resource type="ConvexPolygonShape2D" id=5]
+[sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -8.33334, -4.33333, -8.33334, -10.6667, -5.33334, -5.66667, -2.66666, 2 )
 
-[sub_resource type="ConvexPolygonShape2D" id=6]
+[sub_resource type="ConvexPolygonShape2D" id=10]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 5.33334, 5, -2.66666, 2, -5.33334, -5.66667, 8, 3.66667, 8, 4.66667 )
 
-[sub_resource type="ConvexPolygonShape2D" id=7]
+[sub_resource type="ConvexPolygonShape2D" id=11]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -0.666656, -0.333334, 7.33334, -7, 7.33334, -5.66667, 4.33334, -0.666668, -2, 3 )
 
-[sub_resource type="ConvexPolygonShape2D" id=8]
+[sub_resource type="ConvexPolygonShape2D" id=12]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -8, 3.33333, -0.666656, -0.333334, -2, 3, -8.66666, 5 )
 
-[sub_resource type="ColorRamp" id=9]
+[sub_resource type="ColorRamp" id=13]
 
 offsets = FloatArray( 0.105263, 0.315789, 0.415205, 0.48538, 0.608187, 0.678363, 0.74269, 0.877193, 1 )
 colors = ColorArray( 0, 0, 0, 0, 1, 1, 1, 1, 0, 0.545952, 0.559055, 1, 1, 1, 1, 0, 0, 0.799705, 0.818898, 1, 1, 0, 0, 0, 0, 0.976562, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1 )
@@ -574,18 +571,20 @@ samples/death = {
 
 [node name="game" type="Node2D"]
 
+process/pause_mode = 1
 visibility/opacity = 0.0
 
 [node name="anim" type="AnimationPlayer" parent="." groups=[
 "boss_anim",
 ]]
 
+process/pause_mode = 1
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
 anims/auto = ExtResource( 1 )
-anims/death = SubResource( 10 )
-anims/win = SubResource( 11 )
+anims/death = SubResource( 1 )
+anims/win = SubResource( 2 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -595,10 +594,11 @@ autoplay = "auto"
 "boss_anim",
 ]]
 
+process/pause_mode = 1
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/single_tears = SubResource( 12 )
+anims/single_tears = SubResource( 3 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -608,10 +608,11 @@ autoplay = "single_tears"
 "boss_anim",
 ]]
 
+process/pause_mode = 1
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/triple_tears = SubResource( 13 )
+anims/triple_tears = SubResource( 4 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -621,6 +622,7 @@ autoplay = "triple_tears"
 "boss_anim",
 ]]
 
+process/pause_mode = 1
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
@@ -632,10 +634,12 @@ autoplay = "game_eyes_anim"
 
 [node name="world" type="Node2D" parent="."]
 
+process/pause_mode = 2
 script/script = ExtResource( 3 )
 
 [node name="intro_demon" type="Node2D" parent="world"]
 
+process/pause_mode = 1
 transform/pos = Vector2( 162.36, -65.2492 )
 transform/scale = Vector2( 3, 3 )
 __meta__ = {
@@ -644,12 +648,13 @@ __meta__ = {
 
 [node name="anim" type="AnimationPlayer" parent="world/intro_demon"]
 
+process/pause_mode = 1
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/blinking = SubResource( 1 )
-anims/fade = SubResource( 2 )
-anims/reveal = SubResource( 3 )
+anims/blinking = SubResource( 5 )
+anims/fade = SubResource( 6 )
+anims/reveal = SubResource( 7 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -657,6 +662,7 @@ autoplay = ""
 
 [node name="eye_l" type="Sprite" parent="world/intro_demon"]
 
+process/pause_mode = 1
 visibility/visible = false
 transform/pos = Vector2( -24, -8 )
 texture = ExtResource( 4 )
@@ -664,6 +670,7 @@ hframes = 3
 
 [node name="eye_r" type="Sprite" parent="world/intro_demon"]
 
+process/pause_mode = 1
 visibility/visible = false
 transform/pos = Vector2( 26, -8 )
 transform/scale = Vector2( -1, 1 )
@@ -672,6 +679,7 @@ hframes = 3
 
 [node name="mouth" type="Sprite" parent="world/intro_demon"]
 
+process/pause_mode = 1
 visibility/visible = false
 transform/pos = Vector2( 0, 12 )
 texture = ExtResource( 5 )
@@ -679,8 +687,9 @@ hframes = 5
 
 [node name="sfx" type="SamplePlayer" parent="world/intro_demon"]
 
+process/pause_mode = 1
 config/polyphony = 4
-config/samples = SubResource( 4 )
+config/samples = SubResource( 8 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0
@@ -698,13 +707,14 @@ default/chorus_send = 0.0
 "demon",
 ]]
 
+process/pause_mode = 1
 editor/display_folded = true
 transform/pos = Vector2( -24.1482, -7.66667 )
 input/pickable = true
-shapes/0/shape = SubResource( 5 )
+shapes/0/shape = SubResource( 9 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 6 )
+shapes/1/shape = SubResource( 10 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -728,13 +738,14 @@ trigger = false
 "demon",
 ]]
 
+process/pause_mode = 1
 editor/display_folded = true
 transform/pos = Vector2( 26.5185, -7.66667 )
 input/pickable = true
-shapes/0/shape = SubResource( 7 )
+shapes/0/shape = SubResource( 11 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 8 )
+shapes/1/shape = SubResource( 12 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -756,6 +767,7 @@ trigger = false
 
 [node name="music" type="StreamPlayer" parent="world"]
 
+process/pause_mode = 1
 stream/stream = ExtResource( 10 )
 stream/play = false
 stream/loop = true
@@ -767,14 +779,16 @@ stream/buffering_ms = 500
 
 [node name="player" parent="world" instance=ExtResource( 11 )]
 
+process/pause_mode = 1
 transform/pos = Vector2( 162, 140 )
 power_bar = NodePath("../bar")
-invul_colors = SubResource( 9 )
+invul_colors = SubResource( 13 )
 
 [node name="column" type="StaticBody2D" parent="world" groups=[
 "stone",
 ]]
 
+process/pause_mode = 1
 editor/display_folded = true
 transform/pos = Vector2( 8, 168 )
 input/pickable = false
@@ -808,6 +822,7 @@ _update_shape_index = 0
 "stone",
 ]]
 
+process/pause_mode = 1
 editor/display_folded = true
 transform/pos = Vector2( 17, 124 )
 input/pickable = false
@@ -841,6 +856,7 @@ _update_shape_index = 0
 "stone",
 ]]
 
+process/pause_mode = 1
 editor/display_folded = true
 transform/pos = Vector2( 265, 125 )
 input/pickable = false
@@ -874,6 +890,7 @@ _update_shape_index = 0
 "stone",
 ]]
 
+process/pause_mode = 1
 transform/pos = Vector2( 140, 125 )
 input/pickable = false
 shapes/0/shape = SubResource( 16 )
@@ -891,11 +908,13 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="world/platform2"]
 
+process/pause_mode = 1
 transform/pos = Vector2( 19, -5 )
 texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="world/platform2"]
 
+process/pause_mode = 1
 visibility/visible = false
 transform/pos = Vector2( 19, -5 )
 shape = SubResource( 16 )
@@ -906,6 +925,7 @@ _update_shape_index = 0
 "stone",
 ]]
 
+process/pause_mode = 1
 editor/display_folded = true
 transform/pos = Vector2( 312, 168 )
 input/pickable = false
@@ -939,6 +959,7 @@ _update_shape_index = 0
 "stone",
 ]]
 
+process/pause_mode = 1
 editor/display_folded = true
 transform/pos = Vector2( 160, 184 )
 input/pickable = false
@@ -968,6 +989,7 @@ _update_shape_index = 0
 
 [node name="bar" type="Node2D" parent="world"]
 
+process/pause_mode = 1
 editor/display_folded = true
 transform/pos = Vector2( 29, 179 )
 script/script = ExtResource( 16 )
@@ -1005,7 +1027,7 @@ modulate = Color( 0.515625, 0.515625, 0.515625, 1 )
 visibility/blend_mode = 1
 material/material = ExtResource( 18 )
 transform/pos = Vector2( 277, -3 )
-transform/scale = Vector2( -0.39514, 16 )
+transform/scale = Vector2( -0.132897, 16 )
 texture = ExtResource( 17 )
 centered = false
 modulate = Color( 1, 0, 0, 1 )
@@ -1058,6 +1080,7 @@ default/chorus_send = 0.0
 
 [node name="sfx" type="SamplePlayer" parent="world"]
 
+process/pause_mode = 1
 config/polyphony = 1
 config/samples = SubResource( 19 )
 default/volume_db = 0.0
@@ -1075,6 +1098,7 @@ default/chorus_send = 0.0
 
 [node name="close_eye_spawns" type="Node2D" parent="world"]
 
+process/pause_mode = 1
 editor/display_folded = true
 visibility/visible = false
 
@@ -1104,22 +1128,26 @@ transform/pos = Vector2( 57.5961, 144.983 )
 
 [node name="level" type="Sprite" parent="world"]
 
+process/pause_mode = 1
 transform/pos = Vector2( 161, 8 )
 texture = ExtResource( 25 )
 hframes = 3
 
 [node name="phase" type="Sprite" parent="world"]
 
+process/pause_mode = 1
 transform/pos = Vector2( 161, 22.8182 )
 texture = ExtResource( 26 )
 
 [node name="phase1" type="Sprite" parent="world"]
 
+process/pause_mode = 1
 transform/pos = Vector2( 51.7467, 21.8496 )
 texture = ExtResource( 27 )
 
 [node name="overlay" type="TextureFrame" parent="world"]
 
+process/pause_mode = 1
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -1137,6 +1165,7 @@ __meta__ = {
 
 [node name="hits" type="HBoxContainer" parent="world"]
 
+process/pause_mode = 1
 rect/min_size = Vector2( 75, 0 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -1153,7 +1182,11 @@ skull_icon = ExtResource( 29 )
 
 [node name="blood" type="Node2D" parent="world"]
 
+process/pause_mode = 1
+
 [node name="camera" parent="." instance=ExtResource( 30 )]
+
+process/pause_mode = 1
 
 [connection signal="body_enter" from="world/intro_demon/eye_area_L" to="world" method="_on_eye_area_L_body_enter"]
 

@@ -81,7 +81,6 @@ tracks/2/keys = {
 
 [node name="chooser" type="Control"]
 
-rect/scale = Vector2( 2, 2 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -192,8 +191,6 @@ transform/pos = Vector2( 161, 167.5 )
 texture = ExtResource( 11 )
 
 [node name="camera" parent="." instance=ExtResource( 12 )]
-
-zoom = Vector2( 1, 1 )
 
 [connection signal="pressed" from="arrow" to="." method="_on_arrow_pressed"]
 

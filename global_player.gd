@@ -19,5 +19,11 @@ var body = null
 
 var next_scn = "res://game.tscn"
 
+var name = "name"
+
 func set_weapon(new_weapon):
 	weapon = new_weapon
+
+func load_data(header):
+	if "name" in header.keys():
+		name = header["name"]
