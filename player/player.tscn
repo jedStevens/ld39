@@ -103,7 +103,7 @@ samples/low_hp = {
 "player",
 ]]
 
-transform/pos = Vector2( 0, -7 )
+transform/pos = Vector2( -1, -7 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 1, 4 )
@@ -112,6 +112,9 @@ collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 power_bar = null
 select_block_scn = ExtResource( 2 )
 number_of_blocks = 24

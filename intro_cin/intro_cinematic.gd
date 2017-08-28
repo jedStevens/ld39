@@ -5,3 +5,4 @@ func on_completed():
 	
 func _on_skip_cin_pressed():
 	on_completed()
+ 

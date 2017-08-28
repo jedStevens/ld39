@@ -39,12 +39,17 @@ export(ColorRamp) var invul_colors
 
 signal on_selection(chain)
 
+signal charge_started
+signal charge_released
+
 func _ready():
 	create_selection_blocks()
 	set_process(true)
 	player.body = self
+	
 
 func _process(delta):
+	
 	## Movement
 	if jump_timer > 0:
 		jump_timer -= delta
@@ -58,15 +63,15 @@ func _process(delta):
 	var move_input = Vector2(0,0)
 	velocity.y += delta * player.GRAVITY
 	
-	if Input.is_key_pressed(KEY_A):
+	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
 		move_input.x -= 1
-	if Input.is_key_pressed(KEY_D):
+	if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
 		move_input.x += 1
-	if Input.is_key_pressed(KEY_W) and jump_timer <= 0:
+	if (Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP)) and jump_timer <= 0:
 		move_input.y += 1
 		jump_timer = jump_cooldown
 		
-	if Input.is_key_pressed(KEY_S):
+	if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN):
 		move_input.y -= 0.25
 	
 	if !can_jump() and move_input.y > 0:
@@ -83,6 +88,7 @@ func _process(delta):
 			motion = n.slide(motion)
 			velocity = n.slide(velocity)
 			move(motion)
+	
 		
 	var flip = (move_input.x < 0)
 	if flip:
@@ -139,6 +145,7 @@ func _process(delta):
 				
 		elif get_node(power_bar).current_charge<=0:
 			get_node(power_bar).charge(16,2)
+			
 		else:
 			if block_chain.find(int(block)) == -1:
 				block_chain.append(int(block))

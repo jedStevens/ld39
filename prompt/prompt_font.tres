@@ -1,6 +1,7 @@
 [gd_resource type="DynamicFont" load_steps=2 format=1]
 
-[ext_resource path="res://ui/perfect_dos_vga_437/Perfect DOS VGA 437.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://ui/fonts/Perfect DOS VGA 437.ttf" type="DynamicFontData" id=1]
+
 
 [resource]
 

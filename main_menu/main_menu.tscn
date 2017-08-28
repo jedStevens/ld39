@@ -2,11 +2,11 @@
 
 [ext_resource path="res://main_menu/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://intro_cin/intro_cinematic.tscn" type="PackedScene" id=2]
-[ext_resource path="res://save_n_load/save_n_load.tscn" type="PackedScene" id=3]
-[ext_resource path="res://main_menu/moon.png" type="Texture" id=4]
-[ext_resource path="res://main_menu/star.png" type="Texture" id=5]
-[ext_resource path="res://ui/dream_theme.tres" type="Theme" id=6]
-[ext_resource path="res://main_menu/title.png" type="Texture" id=7]
+[ext_resource path="res://main_menu/moon.png" type="Texture" id=3]
+[ext_resource path="res://main_menu/star.png" type="Texture" id=4]
+[ext_resource path="res://ui/dream_theme.tres" type="Theme" id=5]
+[ext_resource path="res://main_menu/title.png" type="Texture" id=6]
+[ext_resource path="res://ui/dream_theme/9x9_expand.png" type="Texture" id=7]
 [ext_resource path="res://main_menu/credits_section/flowers_0.png" type="Texture" id=8]
 [ext_resource path="res://foliage/flowers/flower_sway.gd" type="Script" id=9]
 [ext_resource path="res://main_menu/credits_section/flowers_1.png" type="Texture" id=10]
@@ -247,13 +247,11 @@ samples/hover = {
 
 [node name="root" type="Node2D"]
 
-visibility/opacity = 0.0
 script/script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 cinematic = ExtResource( 2 )
-save_n_load = ExtResource( 3 )
 continue_button = NodePath("VBoxContainer/play")
 
 [node name="moon" type="Sprite" parent="."]
@@ -261,7 +259,7 @@ continue_button = NodePath("VBoxContainer/play")
 visibility/opacity = 0.0
 transform/pos = Vector2( 32, 48 )
 transform/scale = Vector2( 0.364583, 0.364583 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
 [node name="moon_anim" type="AnimationPlayer" parent="."]
 
@@ -278,7 +276,7 @@ autoplay = ""
 [node name="star" type="Sprite" parent="."]
 
 transform/pos = Vector2( 41, -64 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 modulate = Color( 1, 1, 1, 0.387961 )
 
 [node name="title_text" type="TextureFrame" parent="."]
@@ -287,26 +285,47 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = ExtResource( 6 )
+theme/theme = ExtResource( 5 )
 margin/left = 58.0
 margin/top = 41.0
 margin/right = 265.0
 margin/bottom = 89.0
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 stretch_mode = 0
+
+[node name="fullscreen" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 5 )
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 17.0
+margin/bottom = 19.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+icon = ExtResource( 7 )
+flat = false
 
 [node name="VBoxContainer" type="GridContainer" parent="."]
 
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 2
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = ExtResource( 6 )
-margin/left = 108.0
-margin/top = 102.0
-margin/right = 212.0
-margin/bottom = 134.0
-columns = 2
+theme/theme = ExtResource( 5 )
+margin/left = -96.0
+margin/top = -70.0
+margin/right = -160.0
+margin/bottom = 2.60938
+columns = 1
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -319,15 +338,15 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = ExtResource( 6 )
+theme/theme = ExtResource( 5 )
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 64.0
+margin/right = 50.0
 margin/bottom = 19.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "New Game"
+text = "Play"
 flat = false
 __meta__ = {
 "_edit_lock_": true
@@ -335,16 +354,17 @@ __meta__ = {
 
 [node name="play" type="Button" parent="VBoxContainer"]
 
+visibility/visible = false
 rect/min_size = Vector2( 50, 0 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = ExtResource( 6 )
-margin/left = 68.0
-margin/top = 0.0
-margin/right = 125.0
-margin/bottom = 19.0
+theme/theme = ExtResource( 5 )
+margin/left = 0.0
+margin/top = 23.0
+margin/right = 57.0
+margin/bottom = 42.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -361,10 +381,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = ExtResource( 6 )
+theme/theme = ExtResource( 5 )
 margin/left = 0.0
 margin/top = 23.0
-margin/right = 64.0
+margin/right = 50.0
 margin/bottom = 42.0
 toggle_mode = false
 enabled_focus_mode = 2
@@ -382,11 +402,11 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = ExtResource( 6 )
-margin/left = 68.0
-margin/top = 23.0
-margin/right = 125.0
-margin/bottom = 42.0
+theme/theme = ExtResource( 5 )
+margin/left = 0.0
+margin/top = 46.0
+margin/right = 50.0
+margin/bottom = 65.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -402,7 +422,7 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = ExtResource( 6 )
+theme/theme = ExtResource( 5 )
 margin/left = 67.0
 margin/top = 333.0
 margin/right = 115.0
@@ -433,7 +453,7 @@ transform/pos = Vector2( 159, 170 )
 [node name="0" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -49, 11 )
-transform/rot = -2.55891
+transform/rot = 6.17093
 texture = ExtResource( 8 )
 offset = Vector2( 0.994214, -8.00816 )
 script/script = ExtResource( 9 )
@@ -444,7 +464,7 @@ sway_offset = -29
 [node name="1" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -33, 21 )
-transform/rot = -1.57377
+transform/rot = -2.79862
 texture = ExtResource( 10 )
 offset = Vector2( 0.75958, -10.4126 )
 script/script = ExtResource( 9 )
@@ -455,7 +475,7 @@ sway_offset = 121
 [node name="2" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -30, -4 )
-transform/rot = 7.08609
+transform/rot = -4.0631
 texture = ExtResource( 11 )
 offset = Vector2( 0.879948, -9.96121 )
 script/script = ExtResource( 9 )
@@ -466,7 +486,7 @@ sway_offset = -110
 [node name="3" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -14, 1 )
-transform/rot = -5.91279
+transform/rot = 7.86545
 texture = ExtResource( 12 )
 offset = Vector2( -0.136379, -7.27883 )
 script/script = ExtResource( 9 )
@@ -477,7 +497,7 @@ sway_offset = 0
 [node name="4" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( 44, 17 )
-transform/rot = -7.80567
+transform/rot = 5.70828
 texture = ExtResource( 13 )
 offset = Vector2( 2.83013, -10.3918 )
 script/script = ExtResource( 9 )
@@ -488,7 +508,7 @@ sway_offset = 55
 [node name="5" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( 22, 8 )
-transform/rot = -7.99666
+transform/rot = 6.67288
 texture = ExtResource( 14 )
 offset = Vector2( 1.41242, -10.6773 )
 script/script = ExtResource( 9 )
@@ -499,7 +519,7 @@ sway_offset = 44
 [node name="6" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -71, 15 )
-transform/rot = -2.55891
+transform/rot = 6.17093
 texture = ExtResource( 8 )
 offset = Vector2( 1, -9 )
 script/script = ExtResource( 9 )
@@ -611,6 +631,8 @@ __meta__ = {
 }
 
 [node name="camera" parent="." instance=ExtResource( 20 )]
+
+[connection signal="pressed" from="fullscreen" to="." method="_on_fullscreen_pressed"]
 
 [connection signal="pressed" from="VBoxContainer/new" to="." method="_on_new_pressed"]
 

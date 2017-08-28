@@ -64,7 +64,7 @@ func hit_demon(cause=null):
 		get_tree().call_group(0, "boss_anim", "set_speed", difficulty_factor)
 		if cause != null:
 			var blood = preload("res://demon/demon_blood.tscn").instance()
-			blood.set_rot(cause.get_rot())
+			blood.set_rot(randf() * 2 * PI)
 			blood.set_pos(cause.get_pos())
 			get_node("blood").add_child(blood)
 

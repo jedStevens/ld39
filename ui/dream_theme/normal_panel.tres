@@ -13,9 +13,9 @@ margin/left = 3.0
 margin/right = 3.0
 margin/top = 3.0
 margin/bottom = 3.0
-expand_margin/left = 3.0
-expand_margin/right = 3.0
-expand_margin/top = 3.0
-expand_margin/bottom = 4.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
 draw_center = true
 

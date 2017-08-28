@@ -3,7 +3,7 @@ extends Node2D
 # Root Manager
 var _next_scn = null
 export(PackedScene) var cinematic
-export(PackedScene) var save_n_load
+#export(PackedScene) var save_n_load
 
 export(NodePath) var continue_button
 
@@ -13,6 +13,7 @@ func _on_credits_pressed():
 	get_node("moon_anim").play("hide")
 
 func _ready():
+	OS.set_window_size(Vector2(960,600))
 	set_process(true)
 	
 	if save_manager.get_saves("saves") == []:
@@ -31,7 +32,7 @@ func _on_back_pressed():
 func _on_play_pressed():
 	on_action()
 	get_node("anim").play("lead_out")
-	_next_scn = save_n_load
+	#_next_scn = save_n_load
 	
 
 func on_action():
@@ -48,3 +49,6 @@ func _on_new_pressed():
 	on_action()
 	get_node("anim").play("lead_out")
 	_next_scn = cinematic
+
+func _on_fullscreen_pressed():
+	OS.set_window_fullscreen(not OS.is_window_fullscreen())

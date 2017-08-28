@@ -29,3 +29,6 @@ func play_intro_cin():
 
 func on_lead_out_completed():
 	get_tree().change_scene(player.next_scn)
+
+func _on_fullscreen_pressed():
+	OS.set_window_fullscreen(not OS.is_window_fullscreen())

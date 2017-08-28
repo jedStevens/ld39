@@ -63,6 +63,7 @@ script/script = ExtResource( 1 )
 
 [node name="term" parent="." instance=ExtResource( 2 )]
 
+visibility/opacity = 0.0
 transform/pos = Vector2( 0, 167.845 )
 z/relative = false
 
@@ -81,6 +82,8 @@ texture = ExtResource( 3 )
 stretch_mode = 0
 
 [node name="CRT" parent="." instance=ExtResource( 5 )]
+
+visibility/visible = true
 
 [connection signal="on_command" from="term" to="." method="_on_bg_on_command"]
 

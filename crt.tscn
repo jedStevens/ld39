@@ -99,6 +99,7 @@ shader_param/lines_velocity = 1.0
 
 [node name="CRT" type="Panel"]
 
+visibility/visible = false
 visibility/self_opacity = 0.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -139,5 +140,6 @@ margin/right = 320.0
 margin/bottom = 200.0
 texture = ExtResource( 2 )
 expand = true
+stretch_mode = 0
 
 
