@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=1]
+[gd_scene load_steps=33 format=1]
 
 [ext_resource path="res://main_menu/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://intro_cin/intro_cinematic.tscn" type="PackedScene" id=2]
@@ -19,7 +19,9 @@
 [ext_resource path="res://ui/hover_label.gd" type="Script" id=17]
 [ext_resource path="res://main_menu/theme.ogg" type="AudioStream" id=18]
 [ext_resource path="res://ui/hover.wav" type="Sample" id=19]
-[ext_resource path="res://camera.tscn" type="PackedScene" id=20]
+[ext_resource path="res://networker.gd" type="Script" id=20]
+[ext_resource path="res://main_menu/networker/loading.png" type="Texture" id=21]
+[ext_resource path="res://camera.tscn" type="PackedScene" id=22]
 
 [sub_resource type="Animation" id=1]
 
@@ -245,6 +247,23 @@ samples/hover = {
 "sample": ExtResource( 19 )
 }
 
+[sub_resource type="Animation" id=10]
+
+resource/name = "loading"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("anim:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 7 ]
+}
+
 [node name="root" type="Node2D"]
 
 script/script = ExtResource( 1 )
@@ -453,7 +472,7 @@ transform/pos = Vector2( 159, 170 )
 [node name="0" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -49, 11 )
-transform/rot = 6.17093
+transform/rot = 4.95399
 texture = ExtResource( 8 )
 offset = Vector2( 0.994214, -8.00816 )
 script/script = ExtResource( 9 )
@@ -464,7 +483,7 @@ sway_offset = -29
 [node name="1" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -33, 21 )
-transform/rot = -2.79862
+transform/rot = -7.43106
 texture = ExtResource( 10 )
 offset = Vector2( 0.75958, -10.4126 )
 script/script = ExtResource( 9 )
@@ -475,7 +494,7 @@ sway_offset = 121
 [node name="2" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -30, -4 )
-transform/rot = -4.0631
+transform/rot = 6.9792
 texture = ExtResource( 11 )
 offset = Vector2( 0.879948, -9.96121 )
 script/script = ExtResource( 9 )
@@ -486,7 +505,7 @@ sway_offset = -110
 [node name="3" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -14, 1 )
-transform/rot = 7.86545
+transform/rot = 1.2875
 texture = ExtResource( 12 )
 offset = Vector2( -0.136379, -7.27883 )
 script/script = ExtResource( 9 )
@@ -497,7 +516,7 @@ sway_offset = 0
 [node name="4" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( 44, 17 )
-transform/rot = 5.70828
+transform/rot = -5.72931
 texture = ExtResource( 13 )
 offset = Vector2( 2.83013, -10.3918 )
 script/script = ExtResource( 9 )
@@ -508,7 +527,7 @@ sway_offset = 55
 [node name="5" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( 22, 8 )
-transform/rot = 6.67288
+transform/rot = -4.55867
 texture = ExtResource( 14 )
 offset = Vector2( 1.41242, -10.6773 )
 script/script = ExtResource( 9 )
@@ -519,7 +538,7 @@ sway_offset = 44
 [node name="6" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -71, 15 )
-transform/rot = 6.17093
+transform/rot = 4.95399
 texture = ExtResource( 8 )
 offset = Vector2( 1, -9 )
 script/script = ExtResource( 9 )
@@ -630,7 +649,33 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="camera" parent="." instance=ExtResource( 20 )]
+[node name="networker" type="Node2D" parent="."]
+
+transform/pos = Vector2( 302, 17 )
+script/script = ExtResource( 20 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="anim" type="Sprite" parent="networker"]
+
+transform/scale = Vector2( 0.1875, 0.1875 )
+texture = ExtResource( 21 )
+hframes = 8
+frame = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="networker"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/loading = SubResource( 10 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "loading"
+
+[node name="camera" parent="." instance=ExtResource( 22 )]
 
 [connection signal="pressed" from="fullscreen" to="." method="_on_fullscreen_pressed"]
 
