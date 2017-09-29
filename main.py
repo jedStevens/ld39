@@ -44,3 +44,6 @@ import socket
 
 mySocket = socket.socket ( socket.AF_INET, socket.SOCK_STREAM )
 mySocket.bind ( ( '0.0.0.0', port ) )
+
+while True:
+	pass
