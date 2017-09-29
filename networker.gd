@@ -29,7 +29,7 @@ func _ready():
 		
 	else:
 		# request the game.port over HTTP
-		print("running client version")
+		print("running client version because we got code: ", OS.get_environment("DREAMLIGHTSERVER"))
 
 func read_game_port_file():
 	var file = File.new()
