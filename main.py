@@ -36,8 +36,11 @@ os.system('echo "Server magic code set to: `echo $DREAMLIGHTSERVER`"')
 server = os.path.join(os.path.dirname(os.path.realpath(__file__)), "heroku_server.sh")
 
 os.system("chmod +x "+server)
-os.system(server)
+os.system(server + " &")
 
-os.system('echo "Using Port: "'+str(port))
-os.system("python2 -m  SimpleHTTPServer "+str(port))
+print "Using Port: "+str(port)
 
+import socket
+
+mySocket = socket.socket ( socket.AF_INET, socket.SOCK_STREAM )
+mySocket.bind ( ( '0.0.0.0', port ) )
