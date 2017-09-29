@@ -472,7 +472,7 @@ transform/pos = Vector2( 159, 170 )
 [node name="0" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -49, 11 )
-transform/rot = 5.57411
+transform/rot = -7.44749
 texture = ExtResource( 8 )
 offset = Vector2( 0.994214, -8.00816 )
 script/script = ExtResource( 9 )
@@ -483,7 +483,7 @@ sway_offset = -29
 [node name="1" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -33, 21 )
-transform/rot = -7.69652
+transform/rot = 4.98899
 texture = ExtResource( 10 )
 offset = Vector2( 0.75958, -10.4126 )
 script/script = ExtResource( 9 )
@@ -494,7 +494,7 @@ sway_offset = 121
 [node name="2" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -30, -4 )
-transform/rot = 6.53974
+transform/rot = 1.72044
 texture = ExtResource( 11 )
 offset = Vector2( 0.879948, -9.96121 )
 script/script = ExtResource( 9 )
@@ -505,7 +505,7 @@ sway_offset = -110
 [node name="3" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -14, 1 )
-transform/rot = 2.09319
+transform/rot = -7.93007
 texture = ExtResource( 12 )
 offset = Vector2( -0.136379, -7.27883 )
 script/script = ExtResource( 9 )
@@ -516,7 +516,7 @@ sway_offset = 0
 [node name="4" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( 44, 17 )
-transform/rot = -5.12432
+transform/rot = -3.68392
 texture = ExtResource( 13 )
 offset = Vector2( 2.83013, -10.3918 )
 script/script = ExtResource( 9 )
@@ -527,7 +527,7 @@ sway_offset = 55
 [node name="5" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( 22, 8 )
-transform/rot = -3.85796
+transform/rot = -4.97123
 texture = ExtResource( 14 )
 offset = Vector2( 1.41242, -10.6773 )
 script/script = ExtResource( 9 )
@@ -538,7 +538,7 @@ sway_offset = 44
 [node name="6" type="Sprite" parent="credits/flowers"]
 
 transform/pos = Vector2( -71, 15 )
-transform/rot = 5.57411
+transform/rot = -7.44749
 texture = ExtResource( 8 )
 offset = Vector2( 1, -9 )
 script/script = ExtResource( 9 )
