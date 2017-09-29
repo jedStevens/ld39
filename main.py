@@ -14,8 +14,6 @@ except KeyError:
    print "Please set the environment variable PORT"
    sys.exit(1)
 
-os.system("python2 -m  SimpleHTTPServer "+str(port)+ " &")
-
 os.system("export DREAMLIGHTSERVER=666")
 
 
@@ -39,3 +37,6 @@ server = os.path.join(os.path.dirname(os.path.realpath(__file__)), "heroku_serve
 
 os.system("chmod +x "+server)
 os.system(server)
+
+os.system("python2 -m  SimpleHTTPServer "+str(port))
+
