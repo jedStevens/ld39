@@ -38,5 +38,6 @@ server = os.path.join(os.path.dirname(os.path.realpath(__file__)), "heroku_serve
 os.system("chmod +x "+server)
 os.system(server)
 
+os.system('echo "Using Port: "'+str(port))
 os.system("python2 -m  SimpleHTTPServer "+str(port))
 

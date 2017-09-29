@@ -12,7 +12,7 @@ var client = null
 
 var magic_code = "666"
 
-var server_url = "127.0.0.1"
+var server_url = "dreamlight-server.herokuapp.com"
 var server_port = null
 
 var override_as_server = false

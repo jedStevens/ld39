@@ -16,6 +16,7 @@ func _ready():
 	OS.set_window_size(Vector2(960,600))
 	set_process(true)
 	
+func set_continue_bttn():
 	if save_manager.get_saves("saves") == []:
 		get_node(continue_button).set_disabled(true)
 
